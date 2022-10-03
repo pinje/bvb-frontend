@@ -19,17 +19,15 @@ function NavBar() {
 
     return (
         <nav className={styles.navBar}>
-            <ul>
-                {links.map(link => {
-                    return (
-                        <li key={link.id}>
-                            <NavLink to={link.path}>
-                                {link.text}
-                            </NavLink>
-                        </li>
-                    )
-                })}
-            </ul>
+            {links.map(link => {
+                return (
+                    <li key={link.id}>
+                        <NavLink to={link.path}>
+                            {link.text}
+                        </NavLink>
+                    </li>
+                )
+            })}
         </nav>
     )
 }
