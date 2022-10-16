@@ -8,12 +8,7 @@ function NavBar() {
         {
             id: 1,
             path: "/",
-            text: "Todo List"
-        },
-        {
-            id: 2,
-            path: "/user",
-            text: "User"
+            text: "User List"
         }
     ]
 

@@ -21,7 +21,7 @@ function InputItem(props) {
             <input
                 type="text"
                 className="input-text"
-                placeholder="Add item"
+                placeholder="Add user"
                 onChange={textChanged}
             />
             <button className="input-submit">Submit</button>
