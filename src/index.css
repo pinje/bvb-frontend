@@ -4,7 +4,8 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: black;
+  color: yellow;
+  background-color: black;
   margin-right: auto;
   margin-left: auto;
 }

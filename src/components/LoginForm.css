@@ -1,0 +1,51 @@
+.form-container {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.38);
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+  
+button {
+    text-transform: uppercase;
+}
+
+.input-text {
+    font-size: 1rem;
+    font-weight: 400;
+    width: 85%;
+    padding-right: 5px;
+    padding-left: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.input-text::placeholder {
+    color: #000;
+}
+
+.input-submit {
+    color: black;
+    background-color: yellow;
+    text-transform: capitalize;
+    cursor: pointer;
+    font-weight: bolder;
+    margin-right: 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    width: 15%;
+}
+
+.input-text,
+.input-submit {
+    height: 45px;
+    outline: none;
+    border: none;
+}
