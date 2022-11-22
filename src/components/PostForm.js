@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import '../components/PostForm.css'
+import './styles/PostForm.css'
 
 function PostForm(props) {
 

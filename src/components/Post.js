@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react"
-import "./Post.css"
+import React from "react"
+import "./styles/Post.css"
 import UpvotePost from './UpvotePost'
 import DownvotePost from './DownvotePost';
 import axios from 'axios';

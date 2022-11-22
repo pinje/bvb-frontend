@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./User.module.css"
+import styles from "./styles/User.module.css"
 
 function User(props) {
 

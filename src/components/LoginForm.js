@@ -1,56 +1,54 @@
 import React, { useState } from "react"
-import '../components/LoginForm.css'
+import '../components/styles/LoginForm.css'
 
-function InputItem(props) {
+function LoginForm(props) {
 
-    const [title, setTitle] =
-        useState("dummyTitle");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     const handleSubmit = e => {
         // required to prevent standard behaviour of submitting
         e.preventDefault();
-        props.addItem(title)
+        props.addItem(username, password);
     }
 
-    const textChanged = e => {
-        setTitle(e.target.value)
+    const usernameChanged = e => {
+        setUsername(e.target.value)
+    }
+
+    const passwordChanged = e => {
+        setPassword(e.target.value);
     }
 
     return (
         <div>
             <div className="title">Login</div>
-            <div>
-                Username
-                <form className="form-container"
-                    onSubmit={handleSubmit}>
+            <form className="form-container"  onSubmit={handleSubmit}>
+                <div>
+                    <div>Username</div>
                     <input
                         type="text"
                         className="input-text"
                         placeholder="Username"
-                        onChange={textChanged}
+                        onChange={usernameChanged}
                     />
-                </form>
-            </div>
-            <div>
-                Password
-                <form className="form-container"
-                    onSubmit={handleSubmit}>
+                </div>
+                <div>
+                    <div>Password</div>
                     <input
                         type="password"
                         className="input-text"
                         placeholder="Password"
-                        onChange={textChanged}
+                        onChange={passwordChanged}
                     />
-                </form>
-            </div>
+                </div>
+                <div>{props.error}</div>
             <div>
-                <button className="input-submit">Sign in</button>
+                <button className="input-submit">Login</button>
             </div>
+            </form>
         </div>
-
-
-        
     )
 }
 
-export default InputItem;
+export default LoginForm;

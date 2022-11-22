@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import '../components/LoginForm.css'
+import '../components/styles/LoginForm.css'
 
-function InputItem(props) {
+function SignupForm(props) {
 
     const [username, setUsername] = useState("dummyTitle");
     const [password, setPassword] = useState("dummyTitle");
@@ -50,4 +50,4 @@ function InputItem(props) {
     )
 }
 
-export default InputItem;
+export default SignupForm;

@@ -1,39 +1,41 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import axios from 'axios';
-import InputItem from '../components/InputItem.js';
 import LoginForm from '../components/LoginForm.js'
+import { useNavigate } from "react-router";
+import jwt_decode from 'jwt-decode';
 
 function LoginPage() {
 
-    const [users, setUsers] = useState([]);
-    
-    const refreshUsersList = () => {
-        axios.get("http://localhost:8080/users")
-        .then(response => {
-            setUsers(response.data.users);
-        })
-        .catch(error => console.log(error));
-    };
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        refreshUsersList();
-      }, []);
+    const addItem = async (username, password) => {
 
-    const addItem = username => {
-        const newUser = {
-            "username": username
+        const login = {
+            "username": username,
+            "password": password
         };
-        axios.post("http://localhost:8080/users", newUser)
-        .then(response => {
-            console.log(`User added ID: ${response.data.id }`);
-            refreshUsersList();
-        })
+        
+        await axios.post("http://localhost:8080/login", login)
+            .then(response => {
+                const token = response.data.accessToken;
+                const payload = jwt_decode(token);
+                if (payload instanceof Object) {
+                    window.sessionStorage.setItem("userId", payload.userId.toString());
+                    console.log(window.sessionStorage.getItem("userId"));
+                    window.sessionStorage.setItem("accessToken", token);
+                    console.log(window.sessionStorage.getItem("accessToken"));
+                    navigate("/");
+                }
+            })
+            .catch(setError("Incorrect username or password."));
     }
 
     return (
         <div className="container">
             <div className="inner">
                 <LoginForm addItem={addItem}/>
+                <div className="error">{error}</div>
             </div>
         </div>
     )
