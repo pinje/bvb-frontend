@@ -2,13 +2,8 @@ import React from "react"
 import { NavLink } from "react-router-dom"
 import styles from './styles/NavBar.module.css'
 import logo from '../img/bvb.png'
-import { useNavigate } from "react-router";
-import { useAuth } from "./context/AuthProvider";
 
-function NavBar() {
-
-    const navigate = useNavigate();
-    const { setAuth } = useAuth();
+function NotAuthNavBar() {
 
     const links = [
         {
@@ -30,15 +25,18 @@ function NavBar() {
             id: 4,
             path: "/profile",
             text: "Profile"
+        },
+        {
+            id: 5, 
+            path: "/login",
+            text: "Login"
+        },
+        {
+            id: 6, 
+            path: "/signup",
+            text: "Signup"
         }
     ];
-
-    const logout = (e) => {
-        e.preventDefault();
-        sessionStorage.clear();
-        setAuth(false);
-        navigate("/login");
-    }
 
     return (
         <nav className={styles.navBar}>
@@ -52,10 +50,8 @@ function NavBar() {
                     </li>
                 )
             })}
-            <li> <NavLink onClickCapture={logout}>Logout</NavLink> </li>
-            
         </nav>
     )
 }
 
-export default NavBar;
+export default NotAuthNavBar;
