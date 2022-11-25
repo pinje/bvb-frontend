@@ -8,7 +8,7 @@ import { useAuth } from "./context/AuthProvider";
 function NavBar() {
 
     const navigate = useNavigate();
-    const { setAuth } = useAuth();
+    const { saveAuth } = useAuth();
 
     const links = [
         {
@@ -35,8 +35,11 @@ function NavBar() {
 
     const logout = (e) => {
         e.preventDefault();
-        sessionStorage.clear();
-        setAuth(false);
+        saveAuth({
+            id: 0,
+            roles: [""],
+            accessToken: ""
+        });
         navigate("/login");
     }
 

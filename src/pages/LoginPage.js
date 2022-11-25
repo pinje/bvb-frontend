@@ -8,7 +8,7 @@ import { useAuth } from "../components/context/AuthProvider.js"
 
 function LoginPage() {
 
-    const { setAuth } = useAuth();
+    const { saveAuth } = useAuth();
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
@@ -24,16 +24,14 @@ function LoginPage() {
                 const token = response?.data?.accessToken;
                 const payload = jwt_decode(token);
                 if (payload instanceof Object) {
-                    window.sessionStorage.setItem("userId", payload.userId.toString());
-                    console.log(window.sessionStorage.getItem("userId"));
-                    window.sessionStorage.setItem("role", payload.roles[0].toString());
-                    console.log(window.sessionStorage.getItem("role"));
 
-
-                    window.sessionStorage.setItem("accessToken", token);
-                    console.log(window.sessionStorage.getItem("accessToken"));
-
-                    setAuth(true);
+                    let newAuth = {
+                        id: payload.userId.toString(),
+                        roles: payload.roles.toString(),
+                        accessToken: token
+                    };
+                    
+                    saveAuth(newAuth);
                     navigate("/");
                 }
             })

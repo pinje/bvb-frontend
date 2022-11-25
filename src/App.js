@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {auth ? <NavBar /> : <NotAuthNavbar/>}
+        {auth?.accessToken ? <NavBar /> : <NotAuthNavbar/>}
         <Routes>
           <Route path="/" element={<PostsPage />} />
           <Route path="/submit" element={<SubmitPage />} />
