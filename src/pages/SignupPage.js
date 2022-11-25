@@ -1,23 +1,13 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import axios from 'axios';
 import UsersList from '../components/UsersList.js';
 import SignupForm from '../components/SignupForm'
+import { useNavigate } from "react-router-dom";
 
 function SignupPage() {
 
     const [users, setUsers] = useState([]);
-    
-    const refreshUsersList = () => {
-        axios.get("http://localhost:8080/users")
-        .then(response => {
-            setUsers(response.data.users);
-        })
-        .catch(error => console.log(error));
-    };
-
-    useEffect(() => {
-        refreshUsersList();
-      }, []);
+    const navigate = useNavigate();
 
     const addItem = (username, password) => {
         const newUser = {
@@ -28,7 +18,7 @@ function SignupPage() {
         axios.post("http://localhost:8080/users", newUser)
         .then(response => {
             console.log(`User added ID: ${response.data.id }`);
-            refreshUsersList();
+            navigate("/");
         })
     }
 
