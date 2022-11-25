@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react"
-import InputItem from '../components/InputItem.js';
-import UsersList from '../components/UsersList.js';
 import axios from 'axios';
 import PostsList from "../components/PostsList.js";
 

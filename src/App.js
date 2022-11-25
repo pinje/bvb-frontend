@@ -7,6 +7,7 @@ import SubmitPage from './pages/SubmitPage'
 import NavBar from './components/NavBar.js'
 import NotAuthNavbar from './components/NotAuthNavBar'
 import { useAuth } from './components/context/AuthProvider.js'
+import ProfilePage from './pages/ProfilePage'
 
 function App() {
   const { auth } = useAuth();
@@ -20,6 +21,7 @@ function App() {
           <Route path="/submit" element={<SubmitPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </Router>
     </div>

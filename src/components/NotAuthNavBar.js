@@ -22,17 +22,12 @@ function NotAuthNavBar() {
             text: "Results"
         },
         {
-            id: 4,
-            path: "/profile",
-            text: "Profile"
-        },
-        {
-            id: 5, 
+            id: 4, 
             path: "/login",
             text: "Login"
         },
         {
-            id: 6, 
+            id: 5, 
             path: "/signup",
             text: "Signup"
         }
