@@ -1,12 +1,12 @@
-import Post from './Post';
 import React from "react"
+import Comment from './Comment'
 
 function PostsList(props) {
 
   return (
     <div>
-      {props.posts.map(post => (
-        <Post key={post.id} post={post} />
+      {props.comments.map(comment => (
+        <Comment key={comment.id} comment={comment} />
       ))}
     </div>
   )

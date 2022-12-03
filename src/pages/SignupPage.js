@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import axios from 'axios';
-import UsersList from '../components/UsersList.js';
 import SignupForm from '../components/SignupForm'
 import { useNavigate } from "react-router-dom";
 
@@ -26,7 +25,6 @@ function SignupPage() {
         <div className="container">
             <div className="inner">
                 <SignupForm addItem={addItem}/>
-                <UsersList users={users} />
             </div>
         </div>
     )

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react"
 import axios from 'axios';
-import PostsList from "../components/PostsList.js";
+import PostsList from "../components/posts/PostsList.js";
 
 function PostsPage() {
 
     const [posts, setPosts] = useState([]);
 
-    const refreshUsersList = () => {
+    const getPosts = () => {
         axios.get("http://localhost:8080/posts")
         .then(response => {
             setPosts(response.data.posts);
@@ -14,9 +14,7 @@ function PostsPage() {
         .catch(error => console.log(error));
     };
 
-    useEffect(() => {
-        refreshUsersList();
-      }, []);
+    useEffect(() => getPosts, []);
 
     return (
         <div className="container">

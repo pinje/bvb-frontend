@@ -5,10 +5,24 @@
     border: 1px solid yellow;
     border-radius: 10px;
     display: flex;
+    margin-bottom: 40px;
 }
 
 .post-box {
   width: 100%;
+}
+
+.post-box .footer {
+  display: flex;
+  align-items: center;
+  color: #999999;
+  margin-top: 20px;
+  width: fit-content;
+  padding: 5px;
+}
+
+.post-box .footer:hover {
+  background-color: #404040;
 }
 
 .vote {
@@ -25,4 +39,18 @@
     border-radius: 10px;
     text-transform: uppercase;
     width: 15%;
+}
+
+a {
+  text-decoration: none;
+  list-style: none;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.comment-logo {
+  filter: invert(0.5);
+  height: 15px;
+  width: 15px;
+  margin-right: 10px;
 }

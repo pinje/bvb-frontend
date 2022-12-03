@@ -1,4 +1,4 @@
-import Post from '../Post';
+import Post from '../posts/PostCard';
 import React from "react"
 
 function ProfilePostsList(props) {
