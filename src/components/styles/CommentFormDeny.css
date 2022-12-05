@@ -1,0 +1,38 @@
+.form-container-deny-box {
+    display: flex;
+    flex-direction: column;
+    background-color: #333333;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.form-container-deny-box .text {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.form-container-deny {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container-deny a {
+    color: black;
+    background-color: yellow;
+    text-transform: capitalize;
+    cursor: pointer;
+    font-weight: bolder;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    width: 15%;
+    height: 45px;
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
