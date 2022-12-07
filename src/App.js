@@ -9,6 +9,7 @@ import NotAuthNavbar from './components/NotAuthNavBar'
 import { useAuth } from './components/context/AuthProvider.js'
 import ProfilePage from './pages/ProfilePage'
 import PostPage from './pages/PostPage'
+import ChatPage from './pages/ChatPage'
 
 function App() {
   const { auth } = useAuth();
@@ -24,6 +25,7 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/post/:id" element={<PostPage />} />
+          <Route path="/chat" element={<ChatPage />} />
         </Routes>
       </Router>
     </div>
