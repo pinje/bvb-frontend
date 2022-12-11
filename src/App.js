@@ -10,14 +10,25 @@ import { useAuth } from './components/context/AuthProvider.js'
 import ProfilePage from './pages/ProfilePage'
 import PostPage from './pages/PostPage'
 import ChatPage from './pages/ChatPage'
+import AdminNavBar from './components/AdminNavBar'
 
 function App() {
   const { auth } = useAuth();
 
+  const test = () => {
+    if (auth?.roles == "ADMIN") {
+      return (<AdminNavBar/>)
+    } else if (auth?.roles == "USER") {
+      return (<NavBar/>)
+    } else {
+      return (<NotAuthNavbar/>)
+    }
+  }
+
   return (
     <div className="App">
       <Router>
-        {auth?.accessToken ? <NavBar /> : <NotAuthNavbar/>}
+        {auth?.accessToken ? test() : <NotAuthNavbar/>}
         <Routes>
           <Route path="/" element={<PostsPage />} />
           <Route path="/submit" element={<SubmitPage />} />

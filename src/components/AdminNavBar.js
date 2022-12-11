@@ -5,7 +5,7 @@ import logo from '../img/bvb.png'
 import { useNavigate } from "react-router";
 import { useAuth } from "./context/AuthProvider";
 
-function NavBar() {
+function AdminNavBar() {
 
     const navigate = useNavigate();
     const { saveAuth } = useAuth();
@@ -35,6 +35,11 @@ function NavBar() {
             id: 5,
             path: "/chat",
             text: "Chat"
+        },
+        {
+            id: 6,
+            path: "/admin",
+            text: "Admin"
         }
     ];
 
@@ -66,4 +71,4 @@ function NavBar() {
     )
 }
 
-export default NavBar;
+export default AdminNavBar;

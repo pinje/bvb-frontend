@@ -1,40 +1,47 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import SockJS from 'sockjs-client';
-import Stomp from 'stompjs';
+import { over } from 'stompjs';
 import SendMessage from "../components/chat/SendMessage";
 import ChatMessages from "../components/chat/ChatMessages";
 import { useAuth } from '../components/context/AuthProvider';
 import { v4 as uuidv4 } from 'uuid';
+import jwt_decode from 'jwt-decode'
+import '../components/styles/Chat.css'
 
-const ENDPOINT = "http://localhost:8080/chat"
+var stompClient=null;
 
-function ChatPage() {
-    const [stompClient, setStompClient] = useState();
-    const [username, setUsername] = useState();
-    const [messagesReceived, setMessagesReceived] = useState([]);
+const ChatPage = () => {
     const auth = useAuth();
+    const [user, setUser] = useState({
+        username: jwt_decode(auth.auth.accessToken).sub,
+        connected: false
+    });
+    const [messagesReceived, setMessagesReceived] = useState([]);
+    const [connection, setConnection] = useState(false);
 
-    useEffect(() => {
+    const registerUser = () => {
+        let socket = new SockJS("http://localhost:8080/ws");
+        stompClient = over(socket);
+        stompClient.connect({}, onConnected, onError);
+        setConnection(true);
+    }
 
-        setUsername("test");
-
-        const socket = SockJS(ENDPOINT);
-        
-        const stompClient = Stomp.over(socket);
-
-        stompClient.connect({}, () => {
-            stompClient.subscribe('/topic/publicmessages', (data) => {
-                console.log(data);
-                onMessageReceived(data);
-            });
+    const onConnected = () => {
+        setUser({...user, "connected": true});
+        stompClient.subscribe('/topic/publicmessages', (data) => {
+            console.log(data);
+            onMessageReceived(data);
         });
-        setStompClient(stompClient);
-    }, []);
+    }
+
+    const onError = (err) => {
+        console.log(err);
+    }
 
     // send the data using stomp
     const sendMessage = (newMessage) => {
-        const payload = { 'id': uuidv4(), 'from': username, 'text': newMessage.text };
+        const payload = { 'id': uuidv4(), 'from': user.username, 'text': newMessage.text };
         stompClient.send('/topic/publicmessages', {}, JSON.stringify(payload));
     };
 
@@ -46,10 +53,12 @@ function ChatPage() {
 
     return (
         <div>
-            <SendMessage username={username} onMessageSend={sendMessage} />
-            <br/>
-            <br/>
-            <ChatMessages username={username} messagesReceived={messagesReceived} />
+            <ChatMessages user={user.username} messagesReceived={messagesReceived} />
+            {connection ? 
+            <div><span className="online">● </span>You are Online</div> 
+            : 
+            <div><div><span className="offline">● </span>You are Offline</div><button onClick={registerUser}>connect to chat</button></div>}
+            <SendMessage user={user.username} onMessageSend={sendMessage} />
         </div>
     )
 }

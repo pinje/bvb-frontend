@@ -1,10 +1,10 @@
-import Post from '../posts/PostCard';
+import Comment from '../comments/Comment';
 
 function ProfileCommentsList(props) {
     return (
         <div>
         {props.comments.map(comment => (
-            <Post key={comment.id} post={comment} />
+            <Comment key={comment.id} comment={comment} />
         ))}
         </div>
     )
