@@ -23,16 +23,11 @@ function NavBar() {
         },
         {
             id: 3,
-            path: "/results",
-            text: "Results"
+            path: "/rating",
+            text: "Rating"
         },
         {
             id: 4,
-            path: "/profile",
-            text: "Profile"
-        },
-        {
-            id: 5,
             path: "/chat",
             text: "Chat"
         }

@@ -22,7 +22,7 @@ const SendMessage = (props) => {
 
   return (
     <form onSubmit={onSubmit}>
-      <input id='message' type='text' onChange={(event) => setMessage(event.target.value)} value={message}></input>
+      <input id='message' type='text' onChange={(event) => setMessage(event.target.value)} value={message} className="chat-message-input"></input>
       <button onClick={onMessageSend}>Send</button>
     </form>
   );

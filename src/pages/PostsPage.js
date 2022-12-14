@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react"
 import axios from 'axios';
 import PostsList from "../components/posts/PostsList.js";
+import { useNavigate } from "react-router-dom";
 
 function PostsPage() {
 
     const [posts, setPosts] = useState([]);
+    const navigate = useNavigate();
 
     const getPosts = () => {
         axios.get("http://localhost:8080/posts")
@@ -19,7 +21,19 @@ function PostsPage() {
     return (
         <div className="container">
             <div className="inner">
-                <PostsList posts={posts} />
+                <div className="title-box">
+                    <div className="title">Home Page</div>
+                    <div className="add-post-button">
+                        <button className="add-post" onClick={() => navigate("/submit")}>
+                            <div className="plus-button">+</div>
+                            <div>Create Post</div>
+                        </button>
+                    </div>
+                </div>
+                <div className="post-list">
+                    <PostsList posts={posts} />
+                </div>
+                
             </div>
         </div>
     )

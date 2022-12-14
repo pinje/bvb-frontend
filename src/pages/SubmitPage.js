@@ -1,27 +1,21 @@
-import React, { useState, useEffect } from "react"
-import axios from 'axios';
+import React from "react"
 import PostForm from "../components/posts/PostForm.js";
+import { useAuth } from "../components/context/AuthProvider.js";
+import { Navigate, useLocation } from 'react-router-dom';
 
 function SubmitPage() {
 
-    const [users, setUsers] = useState([]);
+    const auth = useAuth();
+    const location = useLocation();
 
-    const addItem = (username, password) => {
-        const newUser = {
-            "username": username,
-            "password": password
-        };
-
-        axios.post("http://localhost:8080/users", newUser)
-        .then(response => {
-            console.log(`User added ID: ${response.data.id }`);
-        })
+    if (!auth?.auth.accessToken) {
+        return <Navigate to="/Error" state={{ from: location }}></Navigate>
     }
 
     return (
         <div className="container">
             <div className="inner">
-                <PostForm addItem={addItem}/>
+                <PostForm/>
             </div>
         </div>
     )

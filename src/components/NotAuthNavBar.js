@@ -13,21 +13,16 @@ function NotAuthNavBar() {
         },
         {
             id: 2,
-            path: "/calendar",
-            text: "Calendar"
+            path: "/rating",
+            text: "Rating"
         },
         {
-            id: 3,
-            path: "/results",
-            text: "Results"
-        },
-        {
-            id: 4, 
+            id: 3, 
             path: "/login",
             text: "Login"
         },
         {
-            id: 5, 
+            id: 4, 
             path: "/signup",
             text: "Signup"
         }

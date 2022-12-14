@@ -11,6 +11,7 @@ import ProfilePage from './pages/ProfilePage'
 import PostPage from './pages/PostPage'
 import ChatPage from './pages/ChatPage'
 import AdminNavBar from './components/AdminNavBar'
+import Error from './pages/Error'
 
 function App() {
   const { auth } = useAuth();
@@ -37,6 +38,7 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/post/:id" element={<PostPage />} />
           <Route path="/chat" element={<ChatPage />} />
+          <Route path="/error" element={<Error />} />
         </Routes>
       </Router>
     </div>

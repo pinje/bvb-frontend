@@ -55,10 +55,9 @@ const ChatPage = () => {
         <div>
             <ChatMessages user={user.username} messagesReceived={messagesReceived} />
             {connection ? 
-            <div><span className="online">● </span>You are Online</div> 
+            <div><span className="online">● </span>You are Online <SendMessage user={user.username} onMessageSend={sendMessage} /></div> 
             : 
             <div><div><span className="offline">● </span>You are Offline</div><button onClick={registerUser}>connect to chat</button></div>}
-            <SendMessage user={user.username} onMessageSend={sendMessage} />
         </div>
     )
 }

@@ -18,26 +18,21 @@ function AdminNavBar() {
         },
         {
             id: 2,
-            path: "/calendar",
-            text: "Calendar"
+            path: "/rating",
+            text: "Rating"
         },
         {
             id: 3,
-            path: "/results",
-            text: "Results"
-        },
-        {
-            id: 4,
             path: "/profile",
             text: "Profile"
         },
         {
-            id: 5,
+            id: 4,
             path: "/chat",
             text: "Chat"
         },
         {
-            id: 6,
+            id: 5,
             path: "/admin",
             text: "Admin"
         }

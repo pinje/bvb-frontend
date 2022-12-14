@@ -9,7 +9,7 @@ function PostForm(props) {
     const handleSubmit = e => {
         // required to prevent standard behaviour of submitting
         e.preventDefault();
-        props.addItem(title, content);
+        // props.addItem(title, content);
     }
 
     const titleChanged = e => {
