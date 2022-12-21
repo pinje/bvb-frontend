@@ -42,7 +42,7 @@ function ProfilePage() {
     }, []);
 
     if (!auth?.accessToken) {
-        return <Navigate to="/" state={{ from: location }}></Navigate>
+        return <Navigate to="/autherror" state={{ from: location }}></Navigate>
     }
 
     return (

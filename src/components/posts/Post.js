@@ -36,12 +36,17 @@ function Post(props) {
     };
 
     const addComment = (comment) => {
+        const config = {
+            headers: { Authorization: `Bearer ${auth.auth.accessToken}` }
+        }
+
         const newComment = {
             "comment": comment,
             "userId": auth.id,
             "postId": props.post.id
         }
-        axios.post("http://localhost:8080/comments", newComment)
+
+        axios.post("http://localhost:8080/comments", newComment, config)
         .then(response => {
             console.log(`Comment added ID: ${response.data.commentId}`);
             window.location.reload();

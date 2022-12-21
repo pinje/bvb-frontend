@@ -1,15 +1,41 @@
 import React, { useState } from "react"
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthProvider";
 import '../styles/PostForm.css'
+import axios from "axios";
 
 function PostForm(props) {
 
-    const [title, setTitle] = useState("dummyTitle");
-    const [content, setContent] = useState("dummyTitle");
+    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
+    const [error, setError] = useState("");
+    const nagivate = useNavigate();
+    const auth = useAuth();
+
+    const addPost = (title, content) => {
+        const config = {
+            headers: { Authorization: `Bearer ${auth.auth.accessToken}` }
+        }
+
+        const newPost = {
+            "title": title,
+            "content": content,
+            "vote": 1,
+            "userId": auth.auth.id
+        }
+
+        axios.post("http://localhost:8080/posts", newPost, config)
+        .then(response => {
+            console.log(`Post added ID: ${response.data.postId}`);
+            nagivate("/");
+        })
+        .catch(setError("Incorrect entry."));
+    }
 
     const handleSubmit = e => {
         // required to prevent standard behaviour of submitting
         e.preventDefault();
-        // props.addItem(title, content);
+        addPost(title, content);
     }
 
     const titleChanged = e => {
@@ -44,6 +70,7 @@ function PostForm(props) {
                 </div>
             <div>
                 <button className="input-submit">Post</button>
+                <div className="error">{error}</div>
             </div>
             </form>
         </div>
