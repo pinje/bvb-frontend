@@ -19,7 +19,7 @@ function App() {
   const test = () => {
     if (auth?.roles == "ADMIN") {
       return (<AdminNavBar/>)
-    } else if (auth?.roles == "USER") {
+    } else if (auth?.roles == "MEMBER") {
       return (<NavBar/>)
     } else {
       return (<NotAuthNavbar/>)
