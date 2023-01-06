@@ -18,8 +18,8 @@ function AdminNavBar() {
         },
         {
             id: 2,
-            path: "/rating",
-            text: "Rating"
+            path: "/team",
+            text: "Team"
         },
         {
             id: 3,

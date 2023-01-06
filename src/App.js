@@ -12,6 +12,8 @@ import PostPage from './pages/PostPage'
 import ChatPage from './pages/ChatPage'
 import AdminNavBar from './components/AdminNavBar'
 import AuthError from './pages/AuthError'
+import TeamPage from './pages/TeamPage'
+import AdminPage from './pages/AdminPage'
 
 function App() {
   const { auth } = useAuth();
@@ -38,6 +40,8 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/post/:id" element={<PostPage />} />
           <Route path="/chat" element={<ChatPage />} />
+          <Route path="/team" element={<TeamPage />} />
+          <Route path="/admin" element={<AdminPage />} />
           <Route path="/autherror" element={<AuthError />} />
         </Routes>
       </Router>

@@ -23,8 +23,8 @@ function NavBar() {
         },
         {
             id: 3,
-            path: "/rating",
-            text: "Rating"
+            path: "/team",
+            text: "Team"
         },
         {
             id: 4,

@@ -1,0 +1,15 @@
+th {
+    text-align: left;
+}
+
+.player {
+    width: 50%;
+}
+
+.position {
+    width: 20%;
+}
+
+.rating {
+    width: 30%;
+}
