@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from "react"
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
 import { Tabs, Tab } from 'react-bootstrap';
+import { useAuth } from "../components/context/AuthProvider.js";
+import { Navigate, useLocation } from 'react-router-dom';
 
 function AdminPage() {
+    const auth = useAuth();
+    const location = useLocation();
+
     const [key, setKey] = useState('home');
+
+    const role = auth?.auth.roles;
+
+    if (role !== "ADMIN") {
+        return <Navigate to="/AuthError" state={{ from: location }}></Navigate>
+    }
 
     return (
         <div className="container">
