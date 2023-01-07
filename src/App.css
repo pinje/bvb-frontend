@@ -15,8 +15,8 @@
 .container {
   display: flex;
   flex-direction: column;
-  max-width: 600px;
-  margin: 0 auto;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .container .title-box {

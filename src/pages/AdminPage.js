@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Tabs, Tab } from 'react-bootstrap';
 import { useAuth } from "../components/context/AuthProvider.js";
 import { Navigate, useLocation } from 'react-router-dom';
+import RatingPostForm from "../components/rating_post/RatingPostForm.js";
 
 function AdminPage() {
     const auth = useAuth();
@@ -33,7 +34,7 @@ function AdminPage() {
                     <Tab eventKey={"ratingpost"} title="Create Rating Post">
                     {key === 'ratingpost' && (
                         <div>
-
+                            <RatingPostForm/>
                         </div>
                     )}
                     </Tab>
