@@ -15,15 +15,20 @@ function RatingPostForm() {
     const [endYear, setEndYear] = useState("");
     const [matchday, setMatchday] = useState("");
     const [opponent, setOpponent] = useState("");
-    const [tournament, setTournament] = useState("");
-    const [players, setPlayers] = useState([]);
+    const [tournament, setTournament] = useState("BUNDESLIGA");
+    const [selectedPlayersId, setSelectedPlayersId] = useState([]);
 
     const [FWplayers, setFWPlayers] = useState([]);
     const [MFplayers, setMFPlayers] = useState([]);
     const [DFplayers, setDFPlayers] = useState([]);
     const [GKplayers, setGKPlayers] = useState([]);
 
-    const addRatingPost = (startYear, endYear, matchday, opponent, tournament, players) => {
+    const [selectedFWplayers, setSelectedFWPlayers] = useState([]);
+    const [selectedMFplayers, setSelectedMFPlayers] = useState([]);
+    const [selectedDFplayers, setSelectedDFPlayers] = useState([]);
+    const [selectedGKplayers, setSelectedGKPlayers] = useState([]);
+
+    const addRatingPost = (startYear, endYear, matchday, opponent, tournament, selectedPlayersId) => {
         const config = {
             headers: { Authorization: `Bearer ${auth.auth.accessToken}` }
         }
@@ -34,7 +39,7 @@ function RatingPostForm() {
             "matchday": matchday,
             "opponent": opponent,
             "tournament": tournament,
-            "playersId": players
+            "playersId": selectedPlayersId
         }
 
         axios.post("http://localhost:8080/ratingposts", newRatingPost, config)
@@ -77,7 +82,6 @@ function RatingPostForm() {
         })
         .then(response => {
             setDFPlayers(response.data.averageRatings);
-            console.log(response.data);
         })
         .catch(error => console.log(error));
     }
@@ -97,7 +101,7 @@ function RatingPostForm() {
     const handleSubmit = e => {
         // required to prevent standard behaviour of submitting
         e.preventDefault();
-        setPlayers(FWplayers, MFplayers, DFplayers, GKplayers);
+        const players = selectedPlayersId.concat(selectedFWplayers, selectedMFplayers, selectedDFplayers, selectedGKplayers);
         addRatingPost(startYear, endYear, matchday, opponent, tournament, players);
     }
 
@@ -124,16 +128,16 @@ function RatingPostForm() {
     const playerSelectionChanged = (position, selectedPlayers) => {
         switch (position) {
           case 'GK':
-            setGKPlayers(selectedPlayers);
+            setSelectedGKPlayers(selectedPlayers);
             break;
           case 'DF':
-            setDFPlayers(selectedPlayers);
+            setSelectedDFPlayers(selectedPlayers);
             break;
           case 'MF':
-            setMFPlayers(selectedPlayers);
+            setSelectedMFPlayers(selectedPlayers);
             break;
           case 'FW':
-            setFWPlayers(selectedPlayers);
+            setSelectedFWPlayers(selectedPlayers);
             break;
           default:
             break;
