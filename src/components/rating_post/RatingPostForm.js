@@ -45,7 +45,7 @@ function RatingPostForm() {
         axios.post("http://localhost:8080/ratingposts", newRatingPost, config)
         .then(response => {
             console.log(`Rating Post added ID: ${response.data.ratingPostId}`);
-            nagivate("/");
+            nagivate("/success");
         })
         .catch(setError("Incorrect entry."));
     }

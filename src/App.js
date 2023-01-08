@@ -14,6 +14,7 @@ import AdminNavBar from './components/AdminNavBar'
 import AuthError from './pages/AuthError'
 import TeamPage from './pages/TeamPage'
 import AdminPage from './pages/AdminPage'
+import SuccessPage from './pages/SuccessPage'
 
 function App() {
   const { auth } = useAuth();
@@ -43,6 +44,7 @@ function App() {
           <Route path="/team" element={<TeamPage />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/autherror" element={<AuthError />} />
+          <Route path="/success" element={<SuccessPage />} />
         </Routes>
       </Router>
     </div>
