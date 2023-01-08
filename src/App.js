@@ -15,6 +15,8 @@ import AuthError from './pages/AuthError'
 import TeamPage from './pages/TeamPage'
 import AdminPage from './pages/AdminPage'
 import SuccessPage from './pages/SuccessPage'
+import AddPlayer from './pages/AddPlayer'
+import DeletePlayer from './pages/DeletePlayer'
 
 function App() {
   const { auth } = useAuth();
@@ -45,6 +47,8 @@ function App() {
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/autherror" element={<AuthError />} />
           <Route path="/success" element={<SuccessPage />} />
+          <Route path="/addplayer" element={<AddPlayer />} />
+          <Route path="/deleteplayer" element={<DeletePlayer />} />
         </Routes>
       </Router>
     </div>

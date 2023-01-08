@@ -4,6 +4,7 @@ import { Tabs, Tab } from 'react-bootstrap';
 import { useAuth } from "../components/context/AuthProvider.js";
 import { Navigate, useLocation } from 'react-router-dom';
 import RatingPostForm from "../components/rating_post/RatingPostForm.js";
+import PlayersManagement from "../components/players/PlayersManagement.js";
 
 function AdminPage() {
     const auth = useAuth();
@@ -24,13 +25,6 @@ function AdminPage() {
                     <div className="title">Team Page</div>
                 </div>
                 <Tabs activeKey={key} onSelect={(k) => setKey(k)}>
-                    <Tab eventKey={"home"} title="Rating Posts History">
-                    {key === 'home' && (
-                        <div>
-
-                        </div>
-                    )}
-                    </Tab>
                     <Tab eventKey={"ratingpost"} title="Create Rating Post">
                     {key === 'ratingpost' && (
                         <div>
@@ -38,10 +32,10 @@ function AdminPage() {
                         </div>
                     )}
                     </Tab>
-                    <Tab eventKey={"players"} title="Manage Players">
-                    {key === 'players' && (
+                    <Tab eventKey={"home"} title="Manage Players">
+                    {key === 'home' && (
                         <div>
-
+                            <PlayersManagement/>
                         </div>
                     )}
                     </Tab>
