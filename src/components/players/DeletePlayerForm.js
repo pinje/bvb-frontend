@@ -64,13 +64,12 @@ function DeletePlayerForm() {
                             </option>
                         )
                     })}
-                        
                     </select>
                 </div>
-            <div>
-                <button className="input-submit">Delete</button>
-                <div className="error">{error}</div>
-            </div>
+                <div>
+                    <button className="input-submit">Delete</button>
+                    <div className="error">{error}</div>
+                </div>
             </form>
         </div>
     )

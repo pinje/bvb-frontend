@@ -20,7 +20,7 @@ function RatingPost(props) {
 
     // get players selected to this rating post
     const getPlayers = () => {
-        axios.get("http://localhost:8080/players/ratingpost/" + parsedId)
+        axios.get("http://localhost:8080/players/ratingpost/" + 5)
         .then(response => {
             setPlayers(response.data.players);
         })
