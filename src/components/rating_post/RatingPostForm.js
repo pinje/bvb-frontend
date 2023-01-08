@@ -217,7 +217,7 @@ function RatingPostForm() {
                 </div>
             <div>
                 <button className="input-submit">Post</button>
-                <div className="error"></div>
+                <div className="error">{error}</div>
             </div>
             </form>
         </div>
