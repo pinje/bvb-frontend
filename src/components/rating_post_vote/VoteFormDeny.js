@@ -2,14 +2,14 @@ import React, { useState } from "react"
 import '../styles/CommentFormDeny.css'
 import { NavLink, useNavigate } from "react-router-dom";
 
-function CommentFormDeny() {
+function VoteFormDeny() {
 
     return (
         <div>
-            <div className="title">Comment</div>
+            <div className="title">Vote</div>
             <div className="form-container-deny-box">
                 <div className="text">
-                    Login or Signup to comment
+                    Login or Signup to vote
                 </div>
                 <div className="form-container-deny">
                     <NavLink to={"/login"}>login</NavLink>
@@ -19,6 +19,7 @@ function CommentFormDeny() {
             </div>
         </div>
     )
+
 }
 
-export default CommentFormDeny;
+export default VoteFormDeny;

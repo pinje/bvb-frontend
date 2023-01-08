@@ -11,8 +11,6 @@ import { useNavigate } from "react-router-dom";
 
 function Post(props) {
 
-    console.log(props.post.id);
-
     const [comments, setComments] = useState([]);
     const [error, setError] = useState("");
     const { auth } = useAuth();

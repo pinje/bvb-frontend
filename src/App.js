@@ -17,6 +17,7 @@ import AdminPage from './pages/AdminPage'
 import SuccessPage from './pages/SuccessPage'
 import AddPlayer from './pages/AddPlayer'
 import DeletePlayer from './pages/DeletePlayer'
+import VotePage from './pages/VotePage'
 
 function App() {
   const { auth } = useAuth();
@@ -49,6 +50,7 @@ function App() {
           <Route path="/success" element={<SuccessPage />} />
           <Route path="/addplayer" element={<AddPlayer />} />
           <Route path="/deleteplayer" element={<DeletePlayer />} />
+          <Route path="/vote/:id" element={<VotePage />} />
         </Routes>
       </Router>
     </div>
