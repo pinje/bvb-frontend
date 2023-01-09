@@ -1,16 +1,63 @@
 import "../styles/PlayersList.css"
 import { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthProvider";
 
 function VoteForm(props) {
 
     const [error, setError] = useState("");
+    const [ratings, setRatings] = useState([]);
+
+    const auth = useAuth();
+    const nagivate = useNavigate();
+
+    const addVote = (ratings) => {
+        const config = {
+            headers: { Authorization: `Bearer ${auth.auth.accessToken}` }
+        }
+
+        ratings.forEach(element => {
+            const newRating = {
+                "playerId": element[0],
+                "rating": element[1],
+                "userId": auth?.auth.id,
+                "ratingPostId": props.ratingPostId
+            }
+    
+            axios.post("http://localhost:8080/ratings", newRating, config)
+            .then(response => {
+                console.log(`Rating added ID: ${response.data.ratingId}`);
+                nagivate("/success");
+            })
+            .catch(setError("Incorrect entry."));
+        });
+    }
 
     const handleSubmit = e => {
         e.preventDefault();
+
+        if (ratings.length == props.players.length) {
+            addVote(ratings);
+        } else {
+            setError("Incorrect entry.");
+        }
     }
 
-    const ratingSelected = () => {
+    const ratingSelected = (event) => {
+        const playerId = event.target.parentElement.parentElement.id;
+        const rating = event.target.value;
 
+        const check = ratings.find(element => element[0] === playerId);
+
+        if (!ratings.includes(check)) {
+            ratings.push([playerId, rating]);
+        } else {
+            const index = ratings.indexOf(check);
+            ratings.splice(index, 1, [playerId, rating]);
+        }
+
+        console.log(ratings);
     }
 
     return (

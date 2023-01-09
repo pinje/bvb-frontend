@@ -20,12 +20,14 @@ function RatingPost(props) {
 
     // get players selected to this rating post
     const getPlayers = () => {
-        axios.get("http://localhost:8080/players/ratingpost/" + 5)
+        axios.get("http://localhost:8080/players/ratingpost/" + 6)
         .then(response => {
             setPlayers(response.data.players);
         })
         .catch(error => console.log(error));
     };
+
+    // check if user already voted or not
 
     function condition(auth) {
         if(auth === 0) {
@@ -37,7 +39,7 @@ function RatingPost(props) {
         } else {
             return (
                 <div>
-                    <VoteForm players={players}/>
+                    <VoteForm players={players} ratingPostId={6}/>
                 </div>
             )
         }
