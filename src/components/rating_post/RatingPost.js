@@ -11,6 +11,7 @@ function RatingPost(props) {
 
     const [players, setPlayers] = useState([]);
     const [error, setError] = useState("");
+    const [alreadyVoted, setAlreadyVoted] = useState();
     const { auth } = useAuth();
     const navigate = useNavigate();
 
@@ -28,6 +29,32 @@ function RatingPost(props) {
     };
 
     // check if user already voted or not
+    const checkIfUserAlreadyVoted = () => {
+        axios.get("http://localhost:8080/ratings/alreadyvoted?ratingPostId=" 
+        + 14 + "&userId=" + auth.id)
+        .then(response => {
+            setAlreadyVoted(response.data);
+        })
+        .catch(error => console.log(error));
+    }
+
+    function check(alreadyVoted) {
+        if (alreadyVoted) {
+            return (
+                <div>
+                    voted already
+                    <VoteFormDeny/>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    not voted
+                    <VoteForm players={players} ratingPostId={6}/>
+                </div>
+            )
+        }
+    }
 
     function condition(auth) {
         if(auth === 0) {
@@ -38,14 +65,15 @@ function RatingPost(props) {
             )
         } else {
             return (
-                <div>
-                    <VoteForm players={players} ratingPostId={6}/>
-                </div>
+                check(alreadyVoted)
             )
         }
     }
 
-    useEffect(() => getPlayers, []);
+    useEffect(() => {
+        getPlayers();
+        checkIfUserAlreadyVoted();
+    }, []);
 
     return (
         <div className="post">
