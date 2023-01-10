@@ -1,0 +1,7 @@
+.rating-box {
+    display: flex;
+}
+
+.rating-box > .rating {
+    width: 80%;
+}
