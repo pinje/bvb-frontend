@@ -18,13 +18,13 @@ function NavBar() {
         },
         {
             id: 2,
-            path: "/calendar",
-            text: "Calendar"
+            path: "/team",
+            text: "Team"
         },
         {
             id: 3,
-            path: "/team",
-            text: "Team"
+            path: "/profile",
+            text: "Profile"
         },
         {
             id: 4,
