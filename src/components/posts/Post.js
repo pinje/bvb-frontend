@@ -38,7 +38,7 @@ function Post(props) {
 
     const addComment = (comment) => {
         const config = {
-            headers: { Authorization: `Bearer ${auth.auth.accessToken}` }
+            headers: { Authorization: `Bearer ${auth.accessToken}` }
         }
 
         const newComment = {
