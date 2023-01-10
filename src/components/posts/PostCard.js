@@ -8,7 +8,7 @@ import commentlogo from '../../img/comment.png';
 import deleteLogo from '../../img/delete.png';
 import Popup from "reactjs-popup";
 import { useAuth } from "../context/AuthProvider";
-
+import moment from 'moment'
 import { useNavigate } from "react-router-dom";
 
 function PostCard(props) {
@@ -70,6 +70,18 @@ function PostCard(props) {
             return null;
         }
     }
+
+    function getTime() {
+        const date = props.post.date;
+        const dateFormatted = moment(date);
+        const now = moment().format();
+
+        const difference = moment.duration(moment(now).diff(moment(dateFormatted)));
+
+        return (
+            difference.humanize()
+        )
+    }
     
     return (
         <div className="post">
@@ -77,7 +89,7 @@ function PostCard(props) {
             {props.post.vote}
             <DownvotePost downvote={downvote} />
             <div className="post-box">
-                <div className="author">Posted by {props.post.username} @ {props.post.date}</div>
+                <div className="author">Posted by {props.post.username} @ {getTime()} ago</div>
                 <div className="title">{props.post.title}</div>
                 <div className="content">{props.post.content}</div>
                 <div className="footer">

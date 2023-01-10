@@ -5,7 +5,8 @@ import VoteForm from "../rating_post_vote/VoteForm";
 import VoteFormDeny from "../rating_post_vote/VoteFormDeny";
 import { useAuth } from "../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
+import moment from 'moment';
 
 function RatingPost(props) {
 
@@ -70,6 +71,18 @@ function RatingPost(props) {
         }
     }
 
+    function getTime() {
+        const date = props.ratingPost.date;
+        const dateFormatted = moment(date);
+        const now = moment().format();
+
+        const difference = moment.duration(moment(now).diff(moment(dateFormatted)));
+
+        return (
+            difference.humanize()
+        )
+    }
+
     useEffect(() => {
         getPlayers();
         checkIfUserAlreadyVoted();
@@ -80,7 +93,7 @@ function RatingPost(props) {
             <div className="post-box">
                 <div className="author">{props.ratingPost.tournament} vs. {props.ratingPost.opponent}</div>
                 <div className="title">Season {props.ratingPost.start_year}-{props.ratingPost.end_year} 
-                { props.ratingPost.matchday !== 0 && ` matchday ${props.ratingPost.matchday}` }  posted @ {props.ratingPost.date}</div>
+                { props.ratingPost.matchday !== 0 && ` matchday ${props.ratingPost.matchday}` }  posted @ {getTime()}</div>
                 <div className="content">
                 {condition(auth.id)}
                 </div>
