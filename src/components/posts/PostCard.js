@@ -6,6 +6,7 @@ import axios from 'axios';
 import { NavLink } from "react-router-dom";
 import commentlogo from '../../img/comment.png';
 import deleteLogo from '../../img/delete.png';
+import editLogo from '../../img/edit.png';
 import Popup from "reactjs-popup";
 import { useAuth } from "../context/AuthProvider";
 import moment from 'moment'
@@ -64,6 +65,7 @@ function PostCard(props) {
                         </div>
                         )}
                     </Popup>
+                    <button onClick={() => navigate("/editpost/" + props.post.id)}><img className="comment-logo" src={editLogo}/></button>
                 </div>
             )
         } else {
