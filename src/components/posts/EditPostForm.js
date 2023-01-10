@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
 import '../styles/PostForm.css'
 import axios from "axios";
@@ -11,6 +11,11 @@ function EditPostForm(props) {
     const [error, setError] = useState("");
     const nagivate = useNavigate();
     const auth = useAuth();
+    const location = useLocation();
+
+    if (!auth?.auth.accessToken || auth?.auth.id != props.post.userId) {
+        return <Navigate to="/AuthError" state={{ from: location }}></Navigate>
+    }
 
     const editPost = (title, content) => {
         const config = {
