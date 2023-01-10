@@ -54,3 +54,14 @@ a {
   width: 15px;
   margin-right: 10px;
 }
+
+.popup-box {
+  padding: 15px;
+  background-color: #404040;
+  border-radius: 10px;
+  border: 2px solid white;
+}
+
+.popup-overlay {
+  background:  rgba(100, 100, 100, 0.5);
+}
