@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react"
-import { useNavigate, useLocation, Navigate } from "react-router-dom";
+import React, {  useState } from "react"
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
 import '../styles/PostForm.css'
 import axios from "axios";
+import { Navigate, useLocation } from 'react-router-dom';
 
 function EditPostForm(props) {
     
@@ -13,7 +14,7 @@ function EditPostForm(props) {
     const auth = useAuth();
     const location = useLocation();
 
-    if (!auth?.auth.accessToken || auth?.auth.id != props.post.userId) {
+    if (!auth?.auth.accessToken) {
         return <Navigate to="/AuthError" state={{ from: location }}></Navigate>
     }
 
@@ -58,6 +59,7 @@ function EditPostForm(props) {
 
     return (
         <div>
+            {console.log(props.post)}
             <div className="title">Edit post</div>
             <form className="form-container"  onSubmit={handleSubmit}>
                 <div>
