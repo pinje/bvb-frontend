@@ -81,13 +81,13 @@ function PlayersManagement() {
                     <div>Delete Player</div>
                 </button>
             </div>
-            <div className="position-title">Goalkeepers</div>
+            <div className="management-position-title">Goalkeepers</div>
             <PlayersManagementList players={GKplayers} />
-            <div className="position-title">Defenders</div>
+            <div className="management-position-title">Defenders</div>
             <PlayersManagementList players={DFplayers} />
-            <div className="position-title">Midfielders</div>
+            <div className="management-position-title">Midfielders</div>
             <PlayersManagementList players={MFplayers} />
-            <div className="position-title">Forwards</div>
+            <div className="management-position-title">Forwards</div>
             <PlayersManagementList players={FWplayers} />
         </div>
     )

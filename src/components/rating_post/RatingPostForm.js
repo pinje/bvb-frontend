@@ -152,12 +152,12 @@ function RatingPostForm() {
       }, []);
 
     return (
-        <div>
+        <div className="rating-post-form">
             <div className="title">Create a rating post</div>
             <form className="form-container"  onSubmit={handleSubmit}>
-                <div className="seasondate">
+                <div className="section seasondate">
                     <div>
-                        <div>Season start year</div>
+                        <div className="section-title">Season start year</div>
                         <input
                             type="text"
                             className="input-text"
@@ -166,7 +166,7 @@ function RatingPostForm() {
                         />
                     </div>
                     <div>
-                        <div>Season end year</div>
+                        <div className="section-title">Season end year</div>
                         <input
                             type="text"
                             className="input-text"
@@ -175,8 +175,8 @@ function RatingPostForm() {
                         />
                     </div>
                 </div>
-                <div>
-                    <div>Matchday</div>
+                <div className="section">
+                    <div className="section-title">Matchday</div>
                     <input
                         type="text"
                         className="input-text"
@@ -184,8 +184,8 @@ function RatingPostForm() {
                         onChange={matchdayChanged}
                     />
                 </div>
-                <div>
-                    <div>Opponent</div>
+                <div className="section">
+                    <div className="section-title">Opponent</div>
                     <input
                         type="text"
                         className="input-text"
@@ -193,8 +193,8 @@ function RatingPostForm() {
                         onChange={opponentChanged}
                     />
                 </div>
-                <div>
-                    <div>Tournament</div>
+                <div className="section">
+                    <div className="section-title">Tournament</div>
                     <select name="tournament" id="tournament" onChange={tournamentChanged}>
                         <option value="BUNDESLIGA">Bundesliga</option>
                         <option value="CHAMPIONS_LEAGUE">Champions League</option>
@@ -204,19 +204,19 @@ function RatingPostForm() {
                         <option value="FRIENDLY">Friendly</option>
                     </select>
                 </div>
-                <div>
-                    <div>Select Players</div>
-                    <div>GK</div>
+                <div className="section">
+                    <div className="section-title">Select Players</div>
+                    <div className="section-position-title">Goalkeepers</div>
                     <PlayerSelection players={GKplayers} onChange={(selectedPlayers) => playerSelectionChanged('GK', selectedPlayers)} />
-                    <div>DF</div>
+                    <div className="section-position-title">Defenders</div>
                     <PlayerSelection players={DFplayers} onChange={(selectedPlayers) => playerSelectionChanged('DF', selectedPlayers)} />
-                    <div>MF</div>
+                    <div className="section-position-title">Midfielders</div>
                     <PlayerSelection players={MFplayers} onChange={(selectedPlayers) => playerSelectionChanged('MF', selectedPlayers)} />
-                    <div>FW</div>
+                    <div className="section-position-title">Forwards</div>
                     <PlayerSelection players={FWplayers} onChange={(selectedPlayers) => playerSelectionChanged('FW', selectedPlayers)} />
                 </div>
             <div>
-                <button className="input-submit">Post</button>
+                <button className="input-submit">Create Rating Post</button>
                 <div className="error">{error}</div>
             </div>
             </form>

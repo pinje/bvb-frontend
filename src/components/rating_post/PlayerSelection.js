@@ -32,7 +32,7 @@ function PlayerSelection(props) {
                 return (
                     <div className="playerselection">
                         <input type="checkbox" data-player-id={player.player.id} onChange={handleChange} />
-                        <td>{player.player.firstname} {player.player.lastname}</td>
+                        <td>{player.player.firstname.charAt(0).toUpperCase() + player.player.firstname.slice(1)} {player.player.lastname.charAt(0).toUpperCase() + player.player.lastname.slice(1)}</td>
                     </div>
                 )
             })}

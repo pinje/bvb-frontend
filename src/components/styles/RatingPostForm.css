@@ -1,3 +1,30 @@
 .seasondate {
     display: flex;
 }
+
+.rating-post-form .title {
+    font-size: 20px;
+}
+
+.rating-post-form .section {
+    margin-bottom: 10px;
+}
+
+.section-title {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.section-position-title {
+    background-color: yellow;
+    color: black;
+    font-weight: bolder;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.input-submit {
+    width: auto;
+    padding: 10px;
+    margin-top: 10px;
+}
