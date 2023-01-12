@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import deleteLogo from '../../img/delete.png';
 import Popup from "reactjs-popup";
 import moment from 'moment'
+import editLogo from '../../img/edit.png';
 
 function Post(props) {
 
@@ -114,6 +115,7 @@ function Post(props) {
                         </div>
                         )}
                     </Popup>
+                    <img className="comment-logo" src={editLogo}/> <button onClick={() => navigate("/editpost/" + props.post.id)}>Edit</button>
                 </div>
             )
         } else {
