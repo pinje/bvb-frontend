@@ -87,7 +87,7 @@ function TeamPage() {
                 <Tabs activeKey={key} onSelect={(k) => setKey(k)}>
                     <Tab 
                         eventKey={"home"} 
-                        title="Squad List sort by average rating"
+                        title="Squad List sort by rating"
                     >
                     {key === 'home' && (
                         <div className="post-list">

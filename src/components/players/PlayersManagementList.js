@@ -1,5 +1,5 @@
-import "../styles/PlayerSelection.css"
-import { useState, useEffect } from "react";
+import "../styles/PlayersManagementList.css"
+import { useEffect } from "react";
 
 function PlayersManagementList(props) {
 
@@ -8,11 +8,11 @@ function PlayersManagementList(props) {
       }, []);
 
     return (
-        <div>
+        <div className="players">
             {props.players.map(player => {
                 return (
                     <div className="player" id={player.player.id}>
-                        <td>{player.player.firstname} {player.player.lastname}</td>
+                        <td>{player.player.firstname.charAt(0).toUpperCase() + player.player.firstname.slice(1)} {player.player.lastname.charAt(0).toUpperCase() + player.player.lastname.slice(1)}</td>
                     </div>
                 )
             })}

@@ -94,20 +94,21 @@
 }
 
 .nav-tabs > li {
-  width: 200px;
+  border: 0;
 }
 
-.nav-item > .active {
+.nav-link.active {
   background-color: yellow;
+  color: black;
   border: 0;
   padding: 5px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }
 
-.nav-item > .active:not() {
+.nav-link {
   background-color: black;
-  color: yellow;
+  color: rgba(255, 255, 0, 0.5);
   border: 0;
   padding: 5px;
   border-top-right-radius: 10px;
@@ -117,7 +118,6 @@
 .nav-item {
   margin: 0;
   padding: 0;
-  border: 1px solid black;
 }
 
 .tab-content {

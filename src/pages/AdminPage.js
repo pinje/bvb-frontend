@@ -22,22 +22,22 @@ function AdminPage() {
         <div className="container">
             <div className="inner">
                 <div className="title-box">
-                    <div className="title">Team Page</div>
+                    <div className="page-title">Admin Page</div>
                 </div>
                 <Tabs activeKey={key} onSelect={(k) => setKey(k)}>
-                    <Tab eventKey={"ratingpost"} title="Create Rating Post">
-                    {key === 'ratingpost' && (
-                        <div>
-                            <RatingPostForm/>
-                        </div>
-                    )}
-                    </Tab>
                     <Tab eventKey={"home"} title="Manage Players">
-                    {key === 'home' && (
-                        <div>
-                            <PlayersManagement/>
-                        </div>
-                    )}
+                        {key === 'home' && (
+                            <div>
+                                <PlayersManagement/>
+                            </div>
+                        )}
+                    </Tab>
+                    <Tab eventKey={"ratingpost"} title="Create Rating Post">
+                        {key === 'ratingpost' && (
+                            <div>
+                                <RatingPostForm/>
+                            </div>
+                        )}
                     </Tab>
                 </Tabs>
             </div>

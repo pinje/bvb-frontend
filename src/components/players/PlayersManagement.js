@@ -1,7 +1,7 @@
 import PlayersManagementList from "./PlayersManagementList";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "../styles/RatingPostForm.css"
+import "../styles/PlayersManagement.css"
 import { useNavigate } from "react-router-dom";
 
 function PlayersManagement() {
@@ -71,25 +71,23 @@ function PlayersManagement() {
 
     return (
         <div>
-            <div className="add-post-button">
+            <div className="button-box">
                 <button className="add-post" onClick={() => navigate("/addplayer")}>
                     <div className="plus-button">+</div>
                     <div>Add Player</div>
                 </button>
-            </div><div className="add-post-button">
                 <button className="add-post" onClick={() => navigate("/deleteplayer")}>
-                    <div className="plus-button">+</div>
+                    <div className="plus-button">-</div>
                     <div>Delete Player</div>
                 </button>
             </div>
-            <div>Squad List</div>
-            <div>GK</div>
+            <div className="position-title">Goalkeepers</div>
             <PlayersManagementList players={GKplayers} />
-            <div>DF</div>
+            <div className="position-title">Defenders</div>
             <PlayersManagementList players={DFplayers} />
-            <div>MF</div>
+            <div className="position-title">Midfielders</div>
             <PlayersManagementList players={MFplayers} />
-            <div>FW</div>
+            <div className="position-title">Forwards</div>
             <PlayersManagementList players={FWplayers} />
         </div>
     )
