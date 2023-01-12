@@ -31,7 +31,7 @@ function PlayerForm() {
             console.log(`Player added ID: ${response.data.playerId}`);
             nagivate("/success");
         })
-        .catch(setError("Incorrect entry."));
+        .catch(() => setError("Incorrect entry."));
     }
 
     const handleSubmit = e => {

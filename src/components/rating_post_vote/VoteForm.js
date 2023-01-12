@@ -30,7 +30,7 @@ function VoteForm(props) {
                 console.log(`Rating added ID: ${response.data.ratingId}`);
                 nagivate("/success");
             })
-            .catch(setError("Incorrect entry."));
+            .catch(() => setError("Incorrect entry."));
         });
     }
 

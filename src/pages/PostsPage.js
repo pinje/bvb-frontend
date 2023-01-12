@@ -50,7 +50,6 @@ function PostsPage() {
                 <div className="post-list">
                     <PostsList posts={posts} />
                 </div>
-                
             </div>
         </div>
     )

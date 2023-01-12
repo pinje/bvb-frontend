@@ -24,7 +24,7 @@ function DeletePlayerForm() {
             console.log(`Player deleted ID: ${selectedPlayerId}`);
             nagivate("/success");
         })
-        .catch(setError("Incorrect entry."));
+        .catch(() => setError("Incorrect entry."));
     }
 
     const handleSubmit = e => {

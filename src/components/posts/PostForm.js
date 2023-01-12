@@ -29,7 +29,7 @@ function PostForm(props) {
             console.log(`Post added ID: ${response.data.postId}`);
             nagivate("/");
         })
-        .catch(setError("Incorrect entry."));
+        .catch(() => setError("Incorrect entry."));
     }
 
     const handleSubmit = e => {

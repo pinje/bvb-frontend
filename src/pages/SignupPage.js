@@ -4,8 +4,8 @@ import SignupForm from '../components/SignupForm'
 import { useNavigate } from "react-router-dom";
 
 function SignupPage() {
-
-    const [users, setUsers] = useState([]);
+    
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
     const addItem = (username, password) => {
@@ -19,12 +19,14 @@ function SignupPage() {
             console.log(`User added ID: ${response.data.id }`);
             navigate("/");
         })
+        .catch(() => setError("Username already exists."))
     }
 
     return (
         <div className="container">
             <div className="inner">
                 <SignupForm addItem={addItem}/>
+                <div className="error">{error}</div>
             </div>
         </div>
     )

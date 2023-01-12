@@ -40,7 +40,7 @@ function EditPostForm(props) {
             console.log(`Post edited`);
             nagivate("/");
         })
-        .catch(setError("Incorrect entry."));
+        .catch(() => setError("Incorrect entry."));
     }
 
     const handleSubmit = e => {

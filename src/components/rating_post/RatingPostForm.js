@@ -47,7 +47,7 @@ function RatingPostForm() {
             console.log(`Rating Post added ID: ${response.data.ratingPostId}`);
             nagivate("/success");
         })
-        .catch(setError("Incorrect entry."));
+        .catch(() => setError("Incorrect entry."));
     }
 
     const getPlayersByFW = () => {

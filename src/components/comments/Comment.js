@@ -25,7 +25,7 @@ function Comment(props) {
             console.log(`Comment deleted ID: ${commentId}`);
             navigate("/");
         })
-        .catch(setError("Incorrect entry."));
+        .catch(() => setError("Incorrect entry."));
     }
 
     const handleDeleteClick = (item) => {
