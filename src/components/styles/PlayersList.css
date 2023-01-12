@@ -3,13 +3,38 @@ th {
 }
 
 .player {
-    width: 50%;
+    width: 20%;
 }
 
 .position {
     width: 20%;
+    text-align: center;
 }
 
 .rating {
-    width: 30%;
+    width: 20%;
+    text-align: center;
+}
+
+.position-content {
+    text-align: center;
+}
+
+.rating-content {
+    text-align: center;
+}
+
+thead > tr {
+    background-color: yellow;
+    color: black;
+}
+
+.position-box {
+    margin-bottom: 15px;
+}
+
+.position-title {
+    font-weight: bolder;
+    padding-left: 2px;
+    font-size: 25px;
 }

@@ -82,39 +82,42 @@ function TeamPage() {
         <div className="container">
             <div className="inner">
                 <div className="title-box">
-                    <div className="title">Team Page</div>
+                    <div className="page-title">Team Page</div>
                 </div>
                 <Tabs activeKey={key} onSelect={(k) => setKey(k)}>
-                    <Tab eventKey={"home"} title="Squad List ordered by average rating">
+                    <Tab 
+                        eventKey={"home"} 
+                        title="Squad List sort by average rating"
+                    >
                     {key === 'home' && (
                         <div className="post-list">
                             <PlayersList players={players} />
                         </div>
                     )}
                     </Tab>
-                    <Tab eventKey={"position"} title="Squad List ordered by position">
+                    <Tab eventKey={"position"} title="Squad List sort by position">
                     {key === 'position' && (
                         <div>
-                            <div>
-                                Goalkeepers
+                            <div className="position-box">
+                                <div className="position-title">Goalkeepers</div>
                                 <div className="post-list">
                                     <PlayersList players={GKplayers} />
                                 </div>
                             </div>
-                            <div>
-                                Defenders
+                            <div className="position-box">
+                                <div className="position-title">Defenders</div>
                                 <div className="post-list">
                                     <PlayersList players={DFplayers} />
                                 </div>
                             </div>
-                            <div>
-                                Midfielders
+                            <div className="position-box">
+                                <div className="position-title">Midfielders</div>
                                 <div className="post-list">
                                     <PlayersList players={MFplayers} />
                                 </div>
                             </div>
-                            <div>
-                                Fowards
+                            <div className="position-box">
+                                <div className="position-title">Forwards</div>
                                 <div className="post-list">
                                     <PlayersList players={FWplayers} />
                                 </div>

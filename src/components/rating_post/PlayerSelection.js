@@ -30,7 +30,7 @@ function PlayerSelection(props) {
         <div>
             {props.players.map(player => {
                 return (
-                    <div className="player">
+                    <div className="playerselection">
                         <input type="checkbox" data-player-id={player.player.id} onChange={handleChange} />
                         <td>{player.player.firstname} {player.player.lastname}</td>
                     </div>

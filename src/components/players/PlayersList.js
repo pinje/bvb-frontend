@@ -14,9 +14,9 @@ function PlayersList(props) {
             {props.players.map(player => {
                 return (
                     <tr id={player.player.id}>
-                        <td>{player.player.firstname} {player.player.lastname}</td>
-                        <td>{player.player.position}</td>
-                        <td>{player.averageRating}</td>
+                        <td>{player.player.firstname.charAt(0).toUpperCase() + player.player.firstname.slice(1)} {player.player.lastname.charAt(0).toUpperCase() + player.player.lastname.slice(1)}</td>
+                        <td className="position-content">{player.player.position}</td>
+                        <td className="rating-content">{player.averageRating}</td>
                     </tr>
                 )
             })}
