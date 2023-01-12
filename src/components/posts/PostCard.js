@@ -26,13 +26,27 @@ function PostCard(props) {
     }
 
     const [selectedItem, setSelectedItem] = useState(null);
+    const [error, setError] = useState("");
+
+    const deletePost = (postId) => {
+        const config = {
+            headers: { Authorization: `Bearer ${auth.accessToken}` }
+        }
+
+        axios.delete("http://localhost:8080/posts/" + postId, config)
+        .then(response => {
+            console.log(`Post deleted ID: ${postId}`);
+            navigate("/profile");
+        })
+        .catch(setError("Incorrect entry."));
+    }
 
     const handleDeleteClick = (item) => {
         setSelectedItem(item);
     };
 
     const handleConfirmClick = () => {
-        console.log("deleted");
+        deletePost(selectedItem);
         setSelectedItem(null);
         navigate("/");
     };

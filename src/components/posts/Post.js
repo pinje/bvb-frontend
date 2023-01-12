@@ -51,7 +51,20 @@ function Post(props) {
         axios.post("http://localhost:8080/comments", newComment, config)
         .then(response => {
             console.log(`Comment added ID: ${response.data.commentId}`);
-            window.location.reload();
+            navigate("/");
+        })
+        .catch(setError("Incorrect entry."));
+    }
+
+    const deletePost = (postId) => {
+        const config = {
+            headers: { Authorization: `Bearer ${auth.accessToken}` }
+        }
+
+        axios.delete("http://localhost:8080/posts/" + postId, config)
+        .then(response => {
+            console.log(`Post deleted ID: ${postId}`);
+            navigate("/profile");
         })
         .catch(setError("Incorrect entry."));
     }
@@ -82,7 +95,7 @@ function Post(props) {
     };
 
     const handleConfirmClick = () => {
-        console.log("deleted");
+        deletePost(selectedItem);
         setSelectedItem(null);
         navigate("/");
     };

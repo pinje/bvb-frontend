@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import deleteLogo from '../../img/delete.png';
 import Popup from "reactjs-popup";
 import moment from 'moment'
+import axios from "axios";
 
 function Comment(props) {
 
@@ -12,13 +13,27 @@ function Comment(props) {
     const navigate = useNavigate();
 
     const [selectedItem, setSelectedItem] = useState(null);
+    const [error, setError] = useState("");
+
+    const deleteComment = (commentId) => {
+        const config = {
+            headers: { Authorization: `Bearer ${auth.accessToken}` }
+        }
+
+        axios.delete("http://localhost:8080/comments/" + commentId, config)
+        .then(response => {
+            console.log(`Comment deleted ID: ${commentId}`);
+            navigate("/");
+        })
+        .catch(setError("Incorrect entry."));
+    }
 
     const handleDeleteClick = (item) => {
         setSelectedItem(item);
     };
 
     const handleConfirmClick = () => {
-        console.log("deleted");
+        deleteComment(selectedItem);
         setSelectedItem(null);
         navigate("/");
     };
@@ -29,7 +44,7 @@ function Comment(props) {
         } else if (auth === props.comment.userId) {
             return (
                 <div>
-                    <img className="comment-logo" src={deleteLogo}/> <button onClick={() => handleDeleteClick(props.post.id)}>Delete</button>
+                    <img className="comment-logo" src={deleteLogo}/> <button onClick={() => handleDeleteClick(props.comment.id)}>Delete</button>
                     <Popup
                         className="popup"
                         open={selectedItem !== null}
