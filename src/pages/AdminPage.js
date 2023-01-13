@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react"
-import axios from 'axios';
+import React, { useState } from "react"
 import { Tabs, Tab } from 'react-bootstrap';
 import { useAuth } from "../components/context/AuthProvider.js";
 import { Navigate, useLocation } from 'react-router-dom';

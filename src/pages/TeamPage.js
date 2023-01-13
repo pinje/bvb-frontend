@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import axios from 'axios';
 import PlayersList from "../components/players/PlayersList";
-import { useNavigate } from "react-router-dom";
 import { Tabs, Tab } from 'react-bootstrap';
 
 function TeamPage() {
@@ -11,7 +10,6 @@ function TeamPage() {
     const [DFplayers, setDFPlayers] = useState([]);
     const [GKplayers, setGKPlayers] = useState([]);
     const [key, setKey] = useState('home');
-    const navigate = useNavigate();
 
     const getPlayers = () => {
         axios.get("http://localhost:8080/ratings/average")

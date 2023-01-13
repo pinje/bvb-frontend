@@ -2,7 +2,7 @@ import styles from '../styles/Chat.module.css'
 
 const MessageReceived = (props) => {
     return (
-        <div>
+        <div className={styles.message}>
             <b>{props.from}</b>: {props.text}
         </div>
     );

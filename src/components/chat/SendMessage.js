@@ -24,7 +24,7 @@ const SendMessage = (props) => {
   return (
     <form onSubmit={onSubmit}>
       <input id='message' type='text' onChange={(event) => setMessage(event.target.value)} value={message} className={styles.input}></input>
-      <button onClick={onMessageSend}>Send</button>
+      <button onClick={onMessageSend} className={styles.submitbutton}>Send</button>
     </form>
   );
 }

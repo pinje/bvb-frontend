@@ -26,3 +26,18 @@
     outline: none;
     border: none;
 }
+
+.submitbutton {
+    background-color: yellow;
+    margin-left: 10px;
+    font-weight: bolder;
+    border: 0;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.message {
+    text-transform: uppercase;
+}
