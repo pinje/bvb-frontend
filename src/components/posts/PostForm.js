@@ -48,7 +48,7 @@ function PostForm(props) {
 
     return (
         <div>
-            <div className="title">Create a post</div>
+            <div className="page-title">Create a post</div>
             <form className="form-container"  onSubmit={handleSubmit}>
                 <div>
                     <div>Title</div>

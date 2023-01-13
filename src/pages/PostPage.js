@@ -26,10 +26,13 @@ function PostPage() {
     }, []);
 
     return (
-        <div className="post-container">
-            <Post key={post.id} post={post}/>
+        <div className="container">
+            <div className="inner">
+                <div className="post-container">
+                    <Post key={post.id} post={post}/>
+                </div>
+            </div>
         </div>
-        
     )
 }
 

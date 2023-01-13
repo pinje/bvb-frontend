@@ -151,9 +151,11 @@ function Post(props) {
     return (
         <div>
             <div className="post">
-                <UpvotePost upvote={upvote} />
-                {props.post.vote}
-                <DownvotePost downvote={downvote} />
+                <div className="vote">
+                    <UpvotePost upvote={upvote} />
+                    {props.post.vote}
+                    <DownvotePost downvote={downvote} />
+                </div>
                 <div className="post-box">
                     <div className="author">Posted by {props.post.username} @ {getTime()} ago</div>
                     <div className="title">{props.post.title}</div>

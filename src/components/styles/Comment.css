@@ -1,7 +1,17 @@
 .comment {
     color: white;
-    padding: 10px;
+    padding: 15px;
     border-bottom-left-radius: 10px;
     border-bottom: 1px solid yellow;
     border-left: 1px solid yellow;
+}
+
+.comment > .author {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.comment > .content {
+    font-size: 15px;
+    text-align: justify;
 }

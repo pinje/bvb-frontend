@@ -22,7 +22,7 @@ function LoginForm(props) {
 
     return (
         <div>
-            <div className="title">Login</div>
+            <div className="page-title">Login</div>
             <form className="form-container"  onSubmit={handleSubmit}>
                 <div>
                     <div>Username</div>

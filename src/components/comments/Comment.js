@@ -87,10 +87,10 @@ function Comment(props) {
     
     return (
         <div className="comment">
-            <div>
+            <div className="author">
                 {props.comment.username} @ {getTime()} ago
             </div>
-            <div>
+            <div className="content">
                 {props.comment.comment}
             </div>
             {authorizeToDelete(auth.id)}

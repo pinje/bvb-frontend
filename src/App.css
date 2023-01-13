@@ -53,6 +53,9 @@
 
 .add-post:hover {
   cursor: pointer;
+  background-color: yellow;
+  color: black;
+  transition: 0.5s;
 }
 
 .inner {

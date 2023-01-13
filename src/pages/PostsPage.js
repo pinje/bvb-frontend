@@ -35,7 +35,7 @@ function PostsPage() {
         <div className="container">
             <div className="inner">
                 <div className="title-box">
-                    <div className="title">Home Page</div>
+                    <div className="page-title">Home Page</div>
                     <div className="add-post-button">
                         <button className="add-post" onClick={() => navigate("/submit")}>
                             <div className="plus-button">+</div>

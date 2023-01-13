@@ -10,6 +10,23 @@
 
 .post-box {
   width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.post-box > .author {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.post-box > .title {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.post-box > .content {
+  font-size: 15px;
+  text-align: justify;
 }
 
 .post-box .footer {
@@ -23,10 +40,6 @@
 
 .post-box .footer:hover {
   background-color: #404040;
-}
-
-.vote {
-
 }
 
 .upvote .downvote {
@@ -64,4 +77,9 @@ a {
 
 .popup-overlay {
   background:  rgba(100, 100, 100, 0.5);
+}
+
+.post > .vote {
+  display: flex;
+  flex-direction: column;
 }

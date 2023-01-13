@@ -22,7 +22,7 @@ function SignupForm(props) {
 
     return (
         <div>
-            <div className="title">Sign up</div>
+            <div className="page-title">Sign up</div>
             <form className="form-container"  onSubmit={handleSubmit}>
                 <div>
                     <div>Username</div>
