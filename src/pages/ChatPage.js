@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useState } from "react";
 import SockJS from 'sockjs-client';
 import { over } from 'stompjs';
@@ -7,7 +6,7 @@ import ChatMessages from "../components/chat/ChatMessages";
 import { useAuth } from '../components/context/AuthProvider';
 import { v4 as uuidv4 } from 'uuid';
 import jwt_decode from 'jwt-decode'
-import '../components/styles/Chat.css'
+import styles from '../components/styles/Chat.module.css'
 
 var stompClient=null;
 
@@ -55,9 +54,9 @@ const ChatPage = () => {
         <div>
             <ChatMessages user={user.username} messagesReceived={messagesReceived} />
             {connection ? 
-            <div><span className="online">● </span>You are Online <SendMessage user={user.username} onMessageSend={sendMessage} /></div> 
+            <div><span className={styles.online}>● </span>You are Online <SendMessage user={user.username} onMessageSend={sendMessage} /></div> 
             : 
-            <div><div><span className="offline">● </span>You are Offline</div><button onClick={registerUser}>connect to chat</button></div>}
+            <div><div><span className={styles.offline}>● </span>You are Offline</div><button onClick={registerUser}>connect to chat</button></div>}
         </div>
     )
 }

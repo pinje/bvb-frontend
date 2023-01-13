@@ -1,4 +1,4 @@
-.chat-box {
+.chatbox {
     border: 1px solid yellow;
     padding: 10px;
     height: 300px;
@@ -15,7 +15,7 @@
     color: red;
 }
 
-.chat-message-input {
+.input {
     font-size: 1rem;
     font-weight: 400;
     width: 85%;

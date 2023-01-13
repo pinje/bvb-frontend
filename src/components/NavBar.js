@@ -44,20 +44,23 @@ function NavBar() {
     }
 
     return (
-        <nav className={styles.navBar}>
-            <img src={logo}/>
-            {links.map(link => {
-                return (
-                    <li key={link.id}>
-                        <NavLink to={link.path}>
-                            {link.text}
-                        </NavLink>
-                    </li>
-                )
-            })}
-            <li> <NavLink onClickCapture={logout}>Logout</NavLink> </li>
-            
-        </nav>
+        <div>
+            <nav className={styles.navBar}>
+                <img src={logo}/>
+                {links.map(link => {
+                    return (
+                        <li key={link.id}>
+                            <NavLink to={link.path}>
+                                {link.text}
+                            </NavLink>
+                        </li>
+                    )
+                })}
+                <li> <NavLink onClickCapture={logout}>Logout</NavLink></li>
+            </nav>
+            <input className={styles.input}></input>
+            <hr/>
+        </div>
     )
 }
 

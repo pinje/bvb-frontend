@@ -1,11 +1,10 @@
- .navBar {
-    list-style: none;
-    text-decoration: none;
-    height: 100px;
-    border-bottom: 1px solid yellow;
-    display: flex;
-    flex-direction: row;
-    padding: 20px;
+.navBar {
+  list-style: none;
+  text-decoration: none;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
 }
   
 li a {
@@ -31,4 +30,8 @@ li {
   margin-right: 10px;
   padding: 10px;
   width: 100px;
+}
+
+.input {
+  margin-left: 220px;
 }

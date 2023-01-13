@@ -1,4 +1,4 @@
-import '../styles/Chat.css'
+import styles from '../styles/Chat.module.css'
 
 const MessageReceived = (props) => {
     return (
@@ -12,7 +12,7 @@ const ChatMessages = (props) => {
     return (
         <>
             <h2>CHAT</h2>
-            <div className="chat-box">
+            <div className={styles.chatbox}>
             {props.messagesReceived
                 .map(message => <MessageReceived key={message.id} from={message.from} text={message.text} />)}
             </div>

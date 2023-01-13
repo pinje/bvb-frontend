@@ -63,7 +63,7 @@ function VoteForm(props) {
     return (
         <form className="form-container"  onSubmit={handleSubmit}>
             <div className="rating-box">
-                <table className="rating">
+                <table className="vote-rating">
                     <thead>
                         <tr>
                             <th className="player">Player</th>
@@ -75,9 +75,9 @@ function VoteForm(props) {
                     {props.players.map(player => {
                         return (
                             <tr id={player.id}>
-                                <td>{player.firstname} {player.lastname}</td>
-                                <td>{player.position}</td>
-                                <td>
+                                <td>{player.firstname.charAt(0).toUpperCase() + player.firstname.slice(1)} {player.lastname.charAt(0).toUpperCase() + player.lastname.slice(1)}</td>
+                                <td className="position">{player.position}</td>
+                                <td className="position">
                                     <select onChange={ratingSelected}>
                                         <option>-</option>
                                         <option>0</option>
