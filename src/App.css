@@ -94,39 +94,39 @@
 }
 
 .nav-tabs {
-  margin-bottom: 0;
-}
-
-.nav-tabs > li {
-  border: 0;
-}
-
-.nav-link.active {
-  background-color: yellow;
-  color: black;
-  border: 0;
-  padding: 5px;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-}
-
-.nav-link {
-  background-color: black;
-  color: rgba(255, 255, 0, 0.5);
-  border: 0;
-  padding: 5px;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
+  margin-bottom: 15px;
 }
 
 .nav-item {
   margin: 0;
   padding: 0;
+  width: 150px;
+}
+
+.nav-link.active {
+  background-color: #202021;
+  border: 0;
+  padding: 5px;
+  border-bottom: 3px solid #FFD900;
+}
+
+.nav-link {
+  background-color: #202021;
+  color: #CECECE;
+  font-family: 'Barlow';
+  border: 0;
+  padding: 5px;
+  border-bottom: 3px solid #202021;
+  box-shadow: 1px 3px 1px 0px rgba(0, 0, 0, 0.4);
 }
 
 .tab-content {
-  border: 1px solid yellow;
-  padding: 20px;
+  padding: 25px;
+  background-color: #3E3E40;
+  border-radius: 10px;
+  box-shadow: 1px 3px 1px 0px rgba(0, 0, 0, 0.4);
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 .nav button {
@@ -160,4 +160,12 @@ select:hover {
 .error {
   margin-top: 15px;
   color: #C3362B;
+}
+
+.position-title {
+  font-family: 'bold';
+  font-size: 30px;
+  color: #FFD900;
+  text-transform: uppercase;
+  margin-top: 10px;
 }

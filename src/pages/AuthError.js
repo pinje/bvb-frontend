@@ -1,7 +1,7 @@
 function AuthError() {
     return (
         <div>
-            <div>Authentication Error</div>
+            <div className="error">Authentication Error</div>
         </div>
     )
 }

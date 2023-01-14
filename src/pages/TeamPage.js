@@ -88,7 +88,8 @@ function TeamPage() {
                         title="Squad List sort by rating"
                     >
                     {key === 'home' && (
-                        <div className="post-list">
+                        <div>
+                            <div className="position-title">Squad List</div>
                             <PlayersList players={players} />
                         </div>
                     )}
@@ -98,25 +99,25 @@ function TeamPage() {
                         <div>
                             <div className="position-box">
                                 <div className="position-title">Goalkeepers</div>
-                                <div className="post-list">
+                                <div>
                                     <PlayersList players={GKplayers} />
                                 </div>
                             </div>
                             <div className="position-box">
                                 <div className="position-title">Defenders</div>
-                                <div className="post-list">
+                                <div>
                                     <PlayersList players={DFplayers} />
                                 </div>
                             </div>
                             <div className="position-box">
                                 <div className="position-title">Midfielders</div>
-                                <div className="post-list">
+                                <div>
                                     <PlayersList players={MFplayers} />
                                 </div>
                             </div>
                             <div className="position-box">
                                 <div className="position-title">Forwards</div>
-                                <div className="post-list">
+                                <div>
                                     <PlayersList players={FWplayers} />
                                 </div>
                             </div>

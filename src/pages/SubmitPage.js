@@ -9,7 +9,7 @@ function SubmitPage() {
     const location = useLocation();
 
     if (!auth?.auth.accessToken) {
-        return <Navigate to="/AuthError" state={{ from: location }}></Navigate>
+        return <Navigate to="/login" state={{ from: location }}></Navigate>
     }
 
     return (

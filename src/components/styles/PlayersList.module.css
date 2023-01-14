@@ -1,9 +1,10 @@
 th {
     text-align: left;
+    padding: 10px;
 }
 
 .player {
-    width: 20%;
+    width: 50%;
 }
 
 .position {
@@ -16,16 +17,20 @@ th {
     text-align: center;
 }
 
-.position-content {
+.playercontent {
+    padding-left: 10px;
+}
+
+.positioncontent {
     text-align: center;
 }
 
-.rating-content {
+.ratingcontent {
     text-align: center;
 }
 
 thead > tr {
-    background-color: yellow;
+    background-color: #FFD900;
     color: black;
 }
 
