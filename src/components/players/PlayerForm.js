@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
-import '../styles/PostForm.css'
+import '../styles/PostForm.module.css'
 import axios from "axios";
 
 

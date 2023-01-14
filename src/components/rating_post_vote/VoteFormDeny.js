@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import '../styles/CommentFormDeny.css'
+import '../styles/CommentFormDeny.module.css'
 import { NavLink, useNavigate } from "react-router-dom";
 
 function VoteFormDeny() {

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
-import '../styles/PostForm.css'
+import styles from '../styles/PostForm.module.css'
 import axios from "axios";
 
 function PostForm(props) {
@@ -49,27 +49,26 @@ function PostForm(props) {
     return (
         <div>
             <div className="page-title">Create a post</div>
-            <form className="form-container"  onSubmit={handleSubmit}>
+            <form  onSubmit={handleSubmit}>
                 <div>
-                    <div>Title</div>
+                    <div className={styles.title}>Title</div>
                     <input
                         type="text"
-                        className="input-text"
+                        className={styles.inputtext}
                         placeholder="Title (Max. 50 characters)"
                         onChange={titleChanged}
                     />
                 </div>
                 <div>
-                    <div>Text</div>
+                    <div className={styles.title}>Text</div>
                     <textarea
                         type="text"
-                        className="input-text-content"
                         placeholder="Text (Max. 200 characters)"
                         onChange={contentChanged}
                     />
                 </div>
             <div>
-                <button className="input-submit">Post</button>
+                <button className={styles.submit}>Post</button>
                 <div className="error">{error}</div>
             </div>
             </form>
