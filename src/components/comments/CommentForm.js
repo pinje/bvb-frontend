@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import '../styles/CommentForm.css'
+import styles from '../styles/CommentForm.module.css'
 
 function CommentForm(props) {
 
@@ -17,18 +17,17 @@ function CommentForm(props) {
 
     return (
         <div>
-            <div className="title">Comment</div>
-            <form className="form-container"  onSubmit={handleSubmit}>
+            <div className="page-title">Comment</div>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <textarea
                         type="text"
-                        className="input-text-content"
                         placeholder="Text (Max. 200 characters)"
                         onChange={commentChanged}
                     />
                 </div>
             <div>
-                <button className="input-submit">Comment</button>
+                <button className={styles.submit}>Post Comment</button>
             </div>
             </form>
         </div>

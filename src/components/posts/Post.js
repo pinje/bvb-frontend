@@ -11,6 +11,7 @@ import deleteLogo from '../../img/delete.png';
 import Popup from "reactjs-popup";
 import moment from 'moment'
 import editLogo from '../../img/edit.png';
+import styles from "../styles/Post.module.css"
 
 function Post(props) {
 
@@ -104,22 +105,18 @@ function Post(props) {
             return null;
         } else if (auth === props.post.userId) {
             return (
-                <div>
-                    <img className="comment-logo" src={deleteLogo}/> <button onClick={() => handleDeleteClick(props.post.id)}>Delete</button>
+                <div className={styles.footer}>
+                    <button className={styles.button} onClick={() => navigate("/editpost/" + props.post.id)}><img className={styles.logo} src={editLogo}/>Edit</button>
+                    <button className={styles.button} onClick={() => handleDeleteClick(props.post.id)}><img className={styles.logo} src={deleteLogo}/>Delete</button>
                     <Popup
-                        className="popup"
+                        className={styles.popup}
                         open={selectedItem !== null}
                         onClose={() => setSelectedItem(null)}
                         modal
                         closeOnDocumentClick
-                        styles={{
-                            overlay: {
-                                background: 'rgba(211, 211, 211, 1)',
-                            },
-                            }}
                     >
                         {close => (
-                        <div className="popup-box">
+                        <div className={styles.popupbox}>
                             <div>Delete Post?</div>
                             <p>Are you sure you want to delete your post? You can't undo this.</p>
                             <button onClick={close}>Cancel</button>
@@ -127,7 +124,6 @@ function Post(props) {
                         </div>
                         )}
                     </Popup>
-                    <img className="comment-logo" src={editLogo}/> <button onClick={() => navigate("/editpost/" + props.post.id)}>Edit</button>
                 </div>
             )
         } else {
@@ -149,19 +145,17 @@ function Post(props) {
     
     return (
         <div>
-            <div className="post">
-                <div className="vote">
+            <div className={styles.post}>
+                <div className={styles.vote}>
                     <UpvotePost upvote={upvote} />
                     {props.post.vote}
                     <DownvotePost downvote={downvote} />
                 </div>
-                <div className="post-box">
-                    <div className="author">Posted by {props.post.username} @ {getTime()} ago</div>
-                    <div className="title">{props.post.title}</div>
-                    <div className="content">{props.post.content}</div>
-                    <div className="footer">
-                        {authorizeToDelete(auth.id)}
-                    </div>
+                <div className={styles.postbox}>
+                    <div className={styles.author}>Posted by {props.post.username} @ {getTime()} ago</div>
+                    <div className={styles.title}>{props.post.title}</div>
+                    <div className={styles.content}>{props.post.content}</div>
+                    {authorizeToDelete(auth.id)}
                 </div>
             </div>
             {condition(auth.id)}

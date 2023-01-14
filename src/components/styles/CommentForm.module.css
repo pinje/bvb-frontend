@@ -1,0 +1,40 @@
+.title {
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+textarea {
+    font-family: 'semibold';
+    border: 0;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: #CECECE;
+    color: #202021;
+    height: 150px;
+    text-align: left;
+    box-shadow: 1px 3px 1px 0px rgba(0, 0, 0, 0.4);
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFD900;
+    width: fit-content;
+    padding: 10px 15px 10px 15px;
+    border-radius: 5px;
+    color: #202021;
+    cursor: pointer;
+    text-transform: uppercase;
+    -webkit-box-shadow: 2px 3px 0px 0px rgba(179, 152, 0);
+    border: 0;
+    font-family: 'semibold';
+    font-size: 15px;
+}
+
+.submit:hover {
+    background-color: rgba(179, 152, 0);
+}

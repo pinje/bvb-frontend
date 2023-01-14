@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import "../styles/Comment.css"
+import styles from "../styles/Comment.module.css"
 import { useAuth } from "../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import deleteLogo from '../../img/delete.png';
@@ -44,21 +44,16 @@ function Comment(props) {
         } else if (auth === props.comment.userId) {
             return (
                 <div>
-                    <img className="comment-logo" src={deleteLogo}/> <button onClick={() => handleDeleteClick(props.comment.id)}>Delete</button>
+                    <button className={styles.button} onClick={() => handleDeleteClick(props.comment.id)}><img className={styles.logo} src={deleteLogo}/></button>
                     <Popup
-                        className="popup"
+                        className={styles.popup}
                         open={selectedItem !== null}
                         onClose={() => setSelectedItem(null)}
                         modal
                         closeOnDocumentClick
-                        styles={{
-                            overlay: {
-                                background: 'rgba(211, 211, 211, 1)',
-                            },
-                            }}
                     >
                         {close => (
-                        <div className="popup-box">
+                        <div className={styles.popupbox}>
                             <div>Delete Comment?</div>
                             <p>Are you sure you want to delete your comment? You can't undo this.</p>
                             <button onClick={close}>Cancel</button>
@@ -86,14 +81,18 @@ function Comment(props) {
     }
     
     return (
-        <div className="comment">
-            <div className="author">
-                {props.comment.username} @ {getTime()} ago
+        <div className={styles.comment}>
+            <div>
+                <div className={styles.author}>
+                    {props.comment.username} @ {getTime()} ago
+                </div>
+                <div className={styles.content}>
+                    {props.comment.comment}
+                </div>
             </div>
-            <div className="content">
-                {props.comment.comment}
+            <div>
+                {authorizeToDelete(auth.id)}
             </div>
-            {authorizeToDelete(auth.id)}
         </div>
     )
 }
