@@ -1,0 +1,22 @@
+.button {
+    border-radius: 50px;
+    width: fit-content;
+    padding: 10px 15px 10px 15px;
+    display: flex;
+    align-items: center;
+    font-family: 'semibold';
+    background-color: #FFD900;
+    border: 0;
+    cursor: pointer;
+    -webkit-box-shadow: 2px 3px 0px 0px rgba(179, 152, 0);
+    font-size: 20px;
+}
+
+.button:hover {
+    background-color: rgba(179, 152, 0);
+}
+
+.plus {
+    margin-right: 10px;
+    font-size: 20px;
+}

@@ -8,6 +8,12 @@
   src: url('../src/fonts/Barlow-Bold.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'semibold';
+  src: url('../src/fonts/Barlow-SemiBold.ttf') format('truetype');
+}
+
+
 body {
   margin-top: 0;
   font-family: 'Barlow';
