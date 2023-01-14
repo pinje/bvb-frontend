@@ -156,3 +156,8 @@ select:hover {
 .popup-overlay {
   background:  rgba(10, 10, 10, 0.4);
 }
+
+.error {
+  margin-top: 15px;
+  color: #C3362B;
+}

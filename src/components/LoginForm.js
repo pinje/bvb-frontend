@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import '../components/styles/LoginForm.css'
+import styles from '../components/styles/LoginForm.module.css'
 
 function LoginForm(props) {
 
@@ -23,12 +23,12 @@ function LoginForm(props) {
     return (
         <div>
             <div className="page-title">Login</div>
-            <form className="form-container"  onSubmit={handleSubmit}>
+            <form className={styles.login} onSubmit={handleSubmit}>
                 <div>
                     <div>Username</div>
                     <input
                         type="text"
-                        className="input-text"
+                        className={styles.inputtext}
                         placeholder="Username"
                         onChange={usernameChanged}
                     />
@@ -37,14 +37,14 @@ function LoginForm(props) {
                     <div>Password</div>
                     <input
                         type="password"
-                        className="input-text"
+                        className={styles.inputtext}
                         placeholder="Password"
                         onChange={passwordChanged}
                     />
                 </div>
                 <div>{props.error}</div>
-            <div>
-                <button className="input-submit">Login</button>
+            <div className={styles.submitbox}>
+                <button className={styles.submit}>SIGN IN</button>
             </div>
             </form>
         </div>

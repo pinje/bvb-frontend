@@ -17,9 +17,9 @@ function SignupPage() {
         axios.post("http://localhost:8080/users", newUser)
         .then(response => {
             console.log(`User added ID: ${response.data.id }`);
-            navigate("/");
+            navigate("/login");
         })
-        .catch(() => setError("Username already exists."))
+        .catch(() => setError("Username already exists. Try with another username."))
     }
 
     return (

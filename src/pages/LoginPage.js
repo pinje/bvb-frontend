@@ -35,7 +35,7 @@ function LoginPage() {
                     navigate("/");
                 }
             })
-            .catch(() => setError("Incorrect username or password."));
+            .catch(() => setError("Incorrect username or password. Try again."));
     }
 
     return (

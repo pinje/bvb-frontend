@@ -1,10 +1,10 @@
 import React, { useState } from "react"
-import '../components/styles/LoginForm.css'
+import styles from '../components/styles/LoginForm.module.css'
 
 function SignupForm(props) {
 
-    const [username, setUsername] = useState("dummyTitle");
-    const [password, setPassword] = useState("dummyTitle");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     const handleSubmit = e => {
         // required to prevent standard behaviour of submitting
@@ -23,12 +23,12 @@ function SignupForm(props) {
     return (
         <div>
             <div className="page-title">Sign up</div>
-            <form className="form-container"  onSubmit={handleSubmit}>
+            <form className={styles.login}  onSubmit={handleSubmit}>
                 <div>
                     <div>Username</div>
                     <input
                         type="text"
-                        className="input-text"
+                        className={styles.inputtext}
                         placeholder="Username"
                         onChange={usernameChanged}
                     />
@@ -37,13 +37,13 @@ function SignupForm(props) {
                     <div>Password</div>
                     <input
                         type="password"
-                        className="input-text"
+                        className={styles.inputtext}
                         placeholder="Password"
                         onChange={passwordChanged}
                     />
                 </div>
-            <div>
-                <button className="input-submit">Sign up</button>
+            <div className={styles.submitbox}>
+                <button className={styles.submit}>Sign up</button>
             </div>
             </form>
         </div>
