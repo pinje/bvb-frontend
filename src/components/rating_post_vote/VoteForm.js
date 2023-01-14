@@ -1,4 +1,4 @@
-import "../styles/VoteForm.css"
+import styles from "../styles/VoteForm.module.css"
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -61,14 +61,14 @@ function VoteForm(props) {
     }
 
     return (
-        <form className="form-container"  onSubmit={handleSubmit}>
-            <div className="rating-box">
-                <table className="vote-rating">
+        <form onSubmit={handleSubmit}>
+            <div className={styles.ratingbox}>
+                <table>
                     <thead>
                         <tr>
-                            <th className="player">Player</th>
-                            <th className="position">Position</th>
-                            <th className="rating">Rating</th>
+                            <th className={styles.player}>Player</th>
+                            <th className={styles.position}>Position</th>
+                            <th className={styles.rating}>Rating</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -76,8 +76,8 @@ function VoteForm(props) {
                         return (
                             <tr id={player.id}>
                                 <td>{player.firstname.charAt(0).toUpperCase() + player.firstname.slice(1)} {player.lastname.charAt(0).toUpperCase() + player.lastname.slice(1)}</td>
-                                <td className="position">{player.position}</td>
-                                <td className="position">
+                                <td className={styles.position}>{player.position}</td>
+                                <td className={styles.position}>
                                     <select onChange={ratingSelected}>
                                         <option>-</option>
                                         <option>0</option>
@@ -98,7 +98,7 @@ function VoteForm(props) {
                     })}
                     </tbody>
                 </table>
-                <div className="legend">
+                <div className={styles.legend}>
                     <table>
                         <thead>
                             <tr>
@@ -155,8 +155,8 @@ function VoteForm(props) {
                     </table>
                 </div>
             </div>
-            <div>
-                <button className="input-submit">Submit</button>
+            <div className={styles.submitbox}>
+                <button className={styles.submit}>Submit</button>
                 <div className="error">{error}</div>
             </div>
         </form>

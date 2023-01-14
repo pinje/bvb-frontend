@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
-import '../styles/PostForm.module.css'
+import styles from '../styles/PostForm.module.css'
 import axios from "axios";
 
 
@@ -52,8 +52,8 @@ function DeletePlayerForm() {
 
     return (
         <div>
-            <div className="title">Delete a player</div>
-            <form className="form-container"  onSubmit={handleSubmit}>
+            <div className="page-title">Delete player</div>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <select name="player" id="player" onChange={playerSelected}>
                     <option value="-">-</option>
@@ -67,7 +67,7 @@ function DeletePlayerForm() {
                     </select>
                 </div>
                 <div>
-                    <button className="input-submit">Delete</button>
+                    <button className={styles.submit}>Delete Player</button>
                     <div className="error">{error}</div>
                 </div>
             </form>

@@ -6,6 +6,8 @@ import { useAuth } from "../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import moment from 'moment';
+import styles from '../styles/RatingPostCard.module.css'
+import c1 from '../../img/c1.png'
 
 function RatingPost(props) {
 
@@ -21,7 +23,7 @@ function RatingPost(props) {
 
     // get players selected to this rating post
     const getPlayers = () => {
-        axios.get("http://localhost:8080/players/ratingpost/" + 6)
+        axios.get("http://localhost:8080/players/ratingpost/" + parsedId)
         .then(response => {
             setPlayers(response.data.players);
         })
@@ -87,7 +89,7 @@ function RatingPost(props) {
             )
         } else if (tournament == "CHAMPIONS_LEAGUE") {
             return (
-                <div className="champions">Champions League</div>
+                <div><img src={c1} className={styles.champions}/></div>
             )
         } else if (tournament == "EUROPA_LEAGUE") {
             return (
@@ -114,15 +116,16 @@ function RatingPost(props) {
     }, []);
 
     return (
-        <div className="post">
-            <div className="post-box">
-                <div className="author">posted @ {getTime()} ago</div>
-                <div className="title">{tournamentName(props.ratingPost.tournament)} <span className="opponent"> vs {props.ratingPost.opponent}</span></div>
-                <div className="content">Season {props.ratingPost.start_year}-{props.ratingPost.end_year} 
-                { props.ratingPost.matchday !== 0 && ` matchday ${props.ratingPost.matchday}` }</div>
-                <div className="content">
-                    {condition(auth.id)}
-                </div>
+        <div className={styles.ratingpost}>
+            <div className={styles.author}>posted @ {getTime()} ago</div>
+            <div className={styles.title}>
+                {tournamentName(props.ratingPost.tournament)} 
+                <div className={styles.opponent}><span className={styles.vs}>vs</span> {props.ratingPost.opponent}</div>
+            </div>
+            <div>Season {props.ratingPost.start_year}-{props.ratingPost.end_year} 
+            { props.ratingPost.matchday !== 0 && ` matchday ${props.ratingPost.matchday}` }</div>
+            <div>
+                {condition(auth.id)}
             </div>
         </div>
     )

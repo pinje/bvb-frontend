@@ -1,7 +1,7 @@
 import React, {  useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
-import '../styles/PostForm.module.css'
+import styles from '../styles/PostForm.module.css'
 import axios from "axios";
 import { Navigate, useLocation } from 'react-router-dom';
 
@@ -60,8 +60,8 @@ function EditPostForm(props) {
     return (
         <div>
             {console.log(props.post)}
-            <div className="title">Edit post</div>
-            <form className="form-container"  onSubmit={handleSubmit}>
+            <div className="page-title">Edit post</div>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <div>Title</div>
                     <input
@@ -82,7 +82,7 @@ function EditPostForm(props) {
                     />
                 </div>
             <div>
-                <button className="input-submit">Edit Post</button>
+                <button className={styles.submit}>Edit Post</button>
                 <div className="error">{error}</div>
             </div>
             </form>

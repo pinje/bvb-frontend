@@ -124,7 +124,27 @@
   font-weight: bolder;
 }
 
+select {
+  background-color: #272729;
+  box-shadow: 1px 3px 1px 0px rgba(0, 0, 0, 0.4);
+  border: 0;
+  padding: 10px;
+  color: #CECECE;
+  text-transform: uppercase;
+  font-family: 'semibold';
+}
+
+select option {
+  font-family: 'Tahoma';
+  text-transform: uppercase;
+  padding: 10px;
+}
+
 select:hover {
+  cursor: pointer;
+}
+
+option:hover {
   cursor: pointer;
 }
 
@@ -175,4 +195,15 @@ input[type=password] {
   text-align: left;
   box-shadow: 1px 3px 1px 0px rgba(0, 0, 0, 0.4);
   width: 80%;
+}
+
+.popup-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-family: 'bold';
+  text-transform: uppercase;
+  color: #C3362B;
+
 }

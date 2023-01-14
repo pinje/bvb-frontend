@@ -57,9 +57,11 @@ function RatingPostCard(props) {
             <div>Season {props.ratingPost.start_year}-{props.ratingPost.end_year} 
             { props.ratingPost.matchday !== 0 && ` matchday ${props.ratingPost.matchday}` }</div>
             <div className={styles.vote}>
-                <div className={styles.votebutton}>
-                    <NavLink to={`/vote/${props.ratingPost.id}`}>Vote!</NavLink>
-                </div>
+                <NavLink to={`/vote/${props.ratingPost.id}`}>
+                    <div className={styles.votebutton}>
+                        Vote!
+                    </div>
+                </NavLink>
             </div>
         </div>
     )

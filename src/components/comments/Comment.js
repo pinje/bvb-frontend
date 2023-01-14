@@ -54,10 +54,10 @@ function Comment(props) {
                     >
                         {close => (
                         <div className={styles.popupbox}>
-                            <div>Delete Comment?</div>
-                            <p>Are you sure you want to delete your comment? You can't undo this.</p>
-                            <button onClick={close}>Cancel</button>
-                            <button onClick={handleConfirmClick}>Delete Comment</button>
+                            <div className="popup-title">Delete Comment?</div>
+                            <p>Are you sure you want to delete your comment? <br/> You can't undo this.</p>
+                            <button className={styles.cancel} onClick={close}>Cancel</button>
+                            <button className={styles.submit} onClick={handleConfirmClick}>Delete Comment</button>
                         </div>
                         )}
                     </Popup>

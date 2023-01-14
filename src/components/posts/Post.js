@@ -117,10 +117,10 @@ function Post(props) {
                     >
                         {close => (
                         <div className={styles.popupbox}>
-                            <div>Delete Post?</div>
-                            <p>Are you sure you want to delete your post? You can't undo this.</p>
-                            <button onClick={close}>Cancel</button>
-                            <button onClick={handleConfirmClick}>Delete Post</button>
+                            <div className="popup-title">Delete Post?</div>
+                            <p>Are you sure you want to delete your post? <br/> You can't undo this.</p>
+                            <button className={styles.cancel} onClick={close}>Cancel</button>
+                            <button className={styles.submit} onClick={handleConfirmClick}>Delete Post</button>
                         </div>
                         )}
                     </Popup>

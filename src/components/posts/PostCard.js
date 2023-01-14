@@ -57,7 +57,8 @@ function PostCard(props) {
         } else if (auth === props.post.userId) {
             return (
                 <div>
-                    <button onClick={() => handleDeleteClick(props.post.id)}><img className={styles.logo} src={deleteLogo}/></button>
+                    <button className={styles.button} onClick={() => navigate("/editpost/" + props.post.id)}><img className={styles.logo} src={editLogo}/></button>
+                    <button className={styles.button} onClick={() => handleDeleteClick(props.post.id)}><img className={styles.logo} src={deleteLogo}/></button>
                     <Popup
                         className={styles.popup}
                         open={selectedItem !== null}
@@ -67,14 +68,13 @@ function PostCard(props) {
                     >
                         {close => (
                         <div className={styles.popupbox}>
-                            <div>Delete Post?</div>
-                            <p>Are you sure you want to delete your post? You can't undo this.</p>
-                            <button onClick={close}>Cancel</button>
-                            <button onClick={handleConfirmClick}>Delete Post</button>
+                            <div className="popup-title">Delete Post?</div>
+                            <p>Are you sure you want to delete your post? <br/> You can't undo this.</p>
+                            <button className={styles.cancel} onClick={close}>Cancel</button>
+                            <button className={styles.submit} onClick={handleConfirmClick}>Delete Post</button>
                         </div>
                         )}
                     </Popup>
-                    <button onClick={() => navigate("/editpost/" + props.post.id)}><img className={styles.logo} src={editLogo}/></button>
                 </div>
             )
         } else {
@@ -105,10 +105,12 @@ function PostCard(props) {
                 <div className={styles.author}>posted by {props.post.username} @ {getTime()} ago</div>
                 <div className={styles.title}>{props.post.title}</div>
                 <div>{props.post.content}</div>
-                <div className={styles.footer}>
-                    <img className={styles.logo} src={commentlogo}/>
-                    <NavLink to={`/post/${props.post.id}`}>Comments</NavLink>
-                </div>
+                <NavLink to={`/post/${props.post.id}`}>
+                    <div className={styles.footer}>
+                        <img className={styles.logo} src={commentlogo}/>
+                        Comments
+                    </div>
+                </NavLink>
             </div>
             {authorizeToDelete(auth.id)}
         </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
-import '../styles/PostForm.module.css'
+import styles from '../styles/PostForm.module.css'
 import axios from "axios";
 
 
@@ -54,8 +54,8 @@ function PlayerForm() {
 
     return (
         <div>
-            <div className="title">Add a player</div>
-            <form className="form-container"  onSubmit={handleSubmit}>
+            <div className="page-title">Add player</div>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <div>Firstname</div>
                     <input
@@ -84,7 +84,7 @@ function PlayerForm() {
                     </select>
                 </div>
             <div>
-                <button className="input-submit">Add</button>
+                <button className={styles.submit}>Add Player</button>
                 <div className="error">{error}</div>
             </div>
             </form>

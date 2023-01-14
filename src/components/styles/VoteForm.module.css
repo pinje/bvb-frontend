@@ -1,0 +1,53 @@
+.ratingbox {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    margin-bottom: 20px;
+
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.player {
+    width: 70%;
+}
+
+.position {
+    width: 20%;
+}
+
+.rating {
+    width: 20%;
+}
+
+.legend {
+    margin-right: 100px;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFD900;
+    width: 200px;
+    padding: 10px 15px 10px 15px;
+    border-radius: 5px;
+    color: #202021;
+    cursor: pointer;
+    text-transform: uppercase;
+    -webkit-box-shadow: 2px 3px 0px 0px rgba(179, 152, 0);
+    border: 0;
+    font-family: 'semibold';
+    font-size: 15px;
+}
+
+.submit:hover {
+    background-color: rgba(179, 152, 0);
+}
+
+.submitbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

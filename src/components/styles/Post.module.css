@@ -88,3 +88,43 @@
 .button:hover {
     background-color: rgba(179, 152, 0);
 }
+
+.submit {
+  background-color: #C3362B;
+  font-family: 'semibold';
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  color: #CECECE;
+  margin-top: 15px;
+  cursor: pointer;
+  font-weight: bolder;
+  box-shadow: 2px 3px 0px 0px rgba(195, 54, 43, 0.4);
+  border: 0;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.submit:hover {
+  background-color: rgba(195, 54, 43, 0.4);
+}
+
+.cancel {
+  background-color: #CECECE;
+  font-family: 'semibold';
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  color: #202021;
+  margin-top: 15px;
+  cursor: pointer;
+  font-weight: bolder;
+  -webkit-box-shadow: 2px 3px 0px 0px rgba(255, 255, 255, 0.5);
+  border: 0;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.cancel:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
