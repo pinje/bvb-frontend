@@ -10,9 +10,18 @@ function Profile() {
     return (
         <div className={styles.profilebox}>
             <div className={styles.title}>Information</div>
-            <div>ID: {auth.id}</div>
-            <div>Name: {payload.sub.charAt(0).toUpperCase() + payload.sub.slice(1)}</div>
-            <div>Role: {payload.roles}</div>
+            <div className={styles.info}>
+                <div className={styles.infoname}>ID</div>
+                <div className={styles.detail}>{auth.id}</div>
+            </div>
+            <div className={styles.info}>
+                <div className={styles.infoname}>Name</div>
+                <div className={styles.detail}>{payload.sub.charAt(0).toUpperCase() + payload.sub.slice(1)}</div>
+            </div>
+            <div className={styles.info}>
+                <div className={styles.infoname}>Role</div>
+                <div className={styles.detail}>{payload.roles}</div>
+            </div>
         </div>
     )
 }

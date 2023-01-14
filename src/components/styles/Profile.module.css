@@ -2,11 +2,43 @@
     font-weight: bolder;
     font-size: 20px;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .profilebox {
-    border: 1px solid yellow;
     margin-right: 15px;
-    padding: 10px;
     border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 20px;
+    background-color: #3E3E40;
+    box-shadow: 1px 3px 1px 0px rgba(0, 0, 0, 0.4);
+    height: 300px;
+}
+
+.info {
+    border-left: 5px solid #FFD900;
+    margin-bottom: 15px;
+}
+
+.info > div {
+    margin-left: 10px;
+}
+
+.infoname {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 15px;
+}
+
+.detail {
+    color: #CECECE;
+    font-size: 25px;
+}
+
+.pagetitle {
+    font-family: 'bold';
+    font-size: 30px;
+    color: #FFD900;
+    text-transform: uppercase;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }

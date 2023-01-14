@@ -5,6 +5,7 @@ import ProfileCommentsList from '../components/profile/ProfileCommentsList'
 import axios from 'axios';
 import { useAuth } from '../components/context/AuthProvider';
 import { Navigate, useLocation } from 'react-router-dom';
+import { Tabs, Tab } from 'react-bootstrap';
 
 function ProfilePage() {
 
@@ -13,6 +14,7 @@ function ProfilePage() {
     const [posts, setPosts] = useState([]);
     const [comments, setComments] = useState([]);
     const [profile, setProfile] = useState();
+    const [key, setKey] = useState('home');
 
     const { auth } = useAuth();
 
@@ -47,9 +49,25 @@ function ProfilePage() {
 
     return (
         <div className="profile-container">
-            <Profile profile={profile} className="profile" />
-            <ProfilePostsList posts={posts} className="post-list" />
-            <ProfileCommentsList comments={comments} />
+            <Profile profile={profile} />
+            <div className="profile-overview">
+                <div className="page-title">History</div>
+                <Tabs activeKey={key} onSelect={(k) => setKey(k)}>
+                    <Tab 
+                        eventKey={"home"} 
+                        title="Posts"
+                    >
+                    {key === 'home' && (
+                        <ProfilePostsList posts={posts} />
+                    )}
+                    </Tab>
+                    <Tab eventKey={"comments"} title="Comments">
+                    {key === 'comments' && (
+                        <ProfileCommentsList comments={comments} />
+                    )}
+                    </Tab>
+                </Tabs>
+            </div>
         </div>
     )
 }
