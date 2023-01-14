@@ -1,0 +1,77 @@
+input:hover {
+    cursor: auto;
+}
+
+.seasondate {
+    display: flex;
+}
+
+.title {
+    font-family: 'bold';
+    font-size: 30px;
+    color: #FFD900;
+    text-transform: uppercase;
+}
+
+.section {
+    margin-bottom: 10px;
+}
+
+.sectiontitle {
+    margin-top: 10px;
+    font-family: 'semibold';
+    font-size: 25px;
+}
+
+.positiontitle {
+    font-family: 'bold';
+    text-transform: uppercase;
+    font-size: 20px;
+    background-color: #FFD900;
+    color: #272729;;
+    margin-top: 10px;
+    padding: 5px 0 5px 10px;
+}
+
+.selecttournament {
+    margin-bottom: 10px;
+    font-family: 'semibold';
+}
+
+select {
+    background-color: #272729;
+    box-shadow: 1px 3px 1px 0px rgba(0, 0, 0, 0.4);
+    border: 0;
+    padding: 10px;
+    color: #CECECE;
+    font-family: 'semibold';
+    text-transform: uppercase;
+}
+
+select option {
+    font-family: 'semibold';
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFD900;
+    width: fit-content;
+    padding: 10px 15px 10px 15px;
+    border-radius: 5px;
+    color: #202021;
+    cursor: pointer;
+    text-transform: uppercase;
+    -webkit-box-shadow: 2px 3px 0px 0px rgba(179, 152, 0);
+    border: 0;
+    font-family: 'semibold';
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.submit:hover {
+    background-color: rgba(179, 152, 0);
+}

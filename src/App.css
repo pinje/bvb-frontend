@@ -113,17 +113,6 @@
   width: 70%;
 }
 
-select {
-  background-color: black;
-  color: yellow;
-  border: 1px solid yellow;
-  border-radius: 5px;
-  padding: 10px;
-  font-size: 15px;
-  text-transform: uppercase;
-  font-weight: bolder;
-}
-
 select:hover {
   cursor: pointer;
 }

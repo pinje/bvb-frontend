@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import PlayerSelection from "./PlayerSelection";
 import { useAuth } from "../context/AuthProvider";
 import axios from "axios";
-import "../styles/RatingPostForm.css"
+import styles from "../styles/RatingPostForm.module.css"
 import { useNavigate } from "react-router-dom";
 
 function RatingPostForm() {
@@ -153,11 +153,11 @@ function RatingPostForm() {
 
     return (
         <div className="rating-post-form">
-            <div className="title">Create a rating post</div>
-            <form className="form-container"  onSubmit={handleSubmit}>
+            <div className={styles.title}>Create a rating post</div>
+            <form onSubmit={handleSubmit}>
                 <div className="section seasondate">
                     <div>
-                        <div className="section-title">Season start year</div>
+                        <div className={styles.sectiontitle}>Season start year</div>
                         <input
                             type="text"
                             className="input-text"
@@ -166,7 +166,7 @@ function RatingPostForm() {
                         />
                     </div>
                     <div>
-                        <div className="section-title">Season end year</div>
+                        <div className={styles.sectiontitle}>Season end year</div>
                         <input
                             type="text"
                             className="input-text"
@@ -175,8 +175,8 @@ function RatingPostForm() {
                         />
                     </div>
                 </div>
-                <div className="section">
-                    <div className="section-title">Matchday</div>
+                <div className={styles.section}>
+                    <div className={styles.sectiontitle}>Matchday</div>
                     <input
                         type="text"
                         className="input-text"
@@ -184,8 +184,8 @@ function RatingPostForm() {
                         onChange={matchdayChanged}
                     />
                 </div>
-                <div className="section">
-                    <div className="section-title">Opponent</div>
+                <div className={styles.section}>
+                    <div className={styles.sectiontitle}>Opponent</div>
                     <input
                         type="text"
                         className="input-text"
@@ -193,9 +193,9 @@ function RatingPostForm() {
                         onChange={opponentChanged}
                     />
                 </div>
-                <div className="section">
-                    <div className="section-title">Tournament</div>
-                    <select name="tournament" id="tournament" onChange={tournamentChanged}>
+                <div className={styles.selecttournament}>
+                    <div className={styles.sectiontitle}>Tournament</div>
+                    <select onChange={tournamentChanged}>
                         <option value="BUNDESLIGA">Bundesliga</option>
                         <option value="CHAMPIONS_LEAGUE">Champions League</option>
                         <option value="EUROPA_LEAGUE">Europa League</option>
@@ -204,19 +204,19 @@ function RatingPostForm() {
                         <option value="FRIENDLY">Friendly</option>
                     </select>
                 </div>
-                <div className="section">
-                    <div className="section-title">Select Players</div>
-                    <div className="section-position-title">Goalkeepers</div>
+                <div className={styles.section}>
+                    <div className={styles.sectiontitle}>Select Players</div>
+                    <div className={styles.positiontitle}>Goalkeepers</div>
                     <PlayerSelection players={GKplayers} onChange={(selectedPlayers) => playerSelectionChanged('GK', selectedPlayers)} />
-                    <div className="section-position-title">Defenders</div>
+                    <div className={styles.positiontitle}>Defenders</div>
                     <PlayerSelection players={DFplayers} onChange={(selectedPlayers) => playerSelectionChanged('DF', selectedPlayers)} />
-                    <div className="section-position-title">Midfielders</div>
+                    <div className={styles.positiontitle}>Midfielders</div>
                     <PlayerSelection players={MFplayers} onChange={(selectedPlayers) => playerSelectionChanged('MF', selectedPlayers)} />
-                    <div className="section-position-title">Forwards</div>
+                    <div className={styles.positiontitle}>Forwards</div>
                     <PlayerSelection players={FWplayers} onChange={(selectedPlayers) => playerSelectionChanged('FW', selectedPlayers)} />
                 </div>
             <div>
-                <button className="input-submit">Create Rating Post</button>
+                <button className={styles.submit}>Create Rating Post</button>
                 <div className="error">{error}</div>
             </div>
             </form>

@@ -1,4 +1,4 @@
-import "../styles/PlayerSelection.css"
+import styles from "../styles/PlayerSelection.module.css"
 import { useState, useEffect } from "react";
 
 function PlayerSelection(props) {
@@ -30,8 +30,8 @@ function PlayerSelection(props) {
         <div>
             {props.players.map(player => {
                 return (
-                    <div className="playerselection">
-                        <input type="checkbox" data-player-id={player.player.id} onChange={handleChange} />
+                    <div className={styles.playerselection}>
+                        <input className={styles.checkbox} type="checkbox" data-player-id={player.player.id} onChange={handleChange} />
                         <td>{player.player.firstname.charAt(0).toUpperCase() + player.player.firstname.slice(1)} {player.player.lastname.charAt(0).toUpperCase() + player.player.lastname.slice(1)}</td>
                     </div>
                 )
