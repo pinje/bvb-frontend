@@ -74,6 +74,7 @@
 .post-list {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 
 .profile-container {
@@ -152,6 +153,6 @@ select:hover {
   cursor: pointer;
 }
 
-hr {
-  border: 1px solid yellow;
+.popup-overlay {
+  background:  rgba(10, 10, 10, 0.4);
 }

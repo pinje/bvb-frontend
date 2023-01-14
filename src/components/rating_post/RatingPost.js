@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import "../styles/PostCard.css"
 import axios from 'axios';
 import VoteForm from "../rating_post_vote/VoteForm";
 import VoteFormDeny from "../rating_post_vote/VoteFormDeny";

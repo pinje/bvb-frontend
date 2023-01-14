@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import "../styles/PostCard.css"
+import styles from "../styles/PostCard.module.css"
 import UpvotePost from '../UpvotePost'
 import DownvotePost from '../DownvotePost';
 import axios from 'axios';
@@ -57,21 +57,16 @@ function PostCard(props) {
         } else if (auth === props.post.userId) {
             return (
                 <div>
-                    <button onClick={() => handleDeleteClick(props.post.id)}><img className="comment-logo" src={deleteLogo}/></button>
+                    <button onClick={() => handleDeleteClick(props.post.id)}><img className={styles.logo} src={deleteLogo}/></button>
                     <Popup
-                        className="popup"
+                        className={styles.popup}
                         open={selectedItem !== null}
                         onClose={() => setSelectedItem(null)}
                         modal
                         closeOnDocumentClick
-                        styles={{
-                            overlay: {
-                                background: 'rgba(211, 211, 211, 1)',
-                            },
-                            }}
                     >
                         {close => (
-                        <div className="popup-box">
+                        <div className={styles.popupbox}>
                             <div>Delete Post?</div>
                             <p>Are you sure you want to delete your post? You can't undo this.</p>
                             <button onClick={close}>Cancel</button>
@@ -79,7 +74,7 @@ function PostCard(props) {
                         </div>
                         )}
                     </Popup>
-                    <button onClick={() => navigate("/editpost/" + props.post.id)}><img className="comment-logo" src={editLogo}/></button>
+                    <button onClick={() => navigate("/editpost/" + props.post.id)}><img className={styles.logo} src={editLogo}/></button>
                 </div>
             )
         } else {
@@ -100,18 +95,18 @@ function PostCard(props) {
     }
     
     return (
-        <div className="post">
-            <div className="vote">
+        <div className={styles.post}>
+            <div className={styles.vote}>
                 <UpvotePost upvote={upvote} />
                 {props.post.vote}
                 <DownvotePost downvote={downvote} />
             </div>
-            <div className="post-box">
-                <div className="author">Posted by {props.post.username} @ {getTime()} ago</div>
-                <div className="title">{props.post.title}</div>
-                <div className="content">{props.post.content}</div>
-                <div className="footer">
-                    <img className="comment-logo" src={commentlogo}/>
+            <div className={styles.postbox}>
+                <div className={styles.author}>posted by {props.post.username} @ {getTime()} ago</div>
+                <div className={styles.title}>{props.post.title}</div>
+                <div>{props.post.content}</div>
+                <div className={styles.footer}>
+                    <img className={styles.logo} src={commentlogo}/>
                     <NavLink to={`/post/${props.post.id}`}>Comments</NavLink>
                 </div>
             </div>

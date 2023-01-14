@@ -1,45 +1,44 @@
 .post {
-    font-size: 1.2rem;
-    color: #ccc;
-    padding: 10px;
-    border: 1px solid yellow;
+    padding: 25px;
     border-radius: 10px;
     display: flex;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    background-color: #3E3E40;
+    box-shadow: 1px 3px 1px 0px rgba(0, 0, 0, 0.4);
 }
 
-.post-box {
+.postbox {
   width: 100%;
   padding-left: 15px;
   padding-right: 15px;
 }
 
-.post-box > .author {
+.author {
   font-size: 15px;
   color: rgba(255, 255, 255, 0.5);
 }
 
-.post-box > .title {
-  font-size: 25px;
-  margin-bottom: 10px;
+.title {
+  text-transform: uppercase;
+  font-size: 40px;
+  color: #FFD900;
+  font-family: 'bold';
 }
 
-.post-box > .content {
-  font-size: 15px;
-  text-align: justify;
-}
-
-.post-box .footer {
+.footer {
   display: flex;
   align-items: center;
-  color: #999999;
   margin-top: 20px;
   width: fit-content;
-  padding: 5px;
+  background-color: #202021;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 3px 0px 0px rgba(0,0,0,0.4);
+  cursor: pointer;
 }
 
-.post-box .footer:hover {
-  background-color: #404040;
+.footer:hover {
+  background-color: rgba(0,0,0,0.4);;
 }
 
 .upvote .downvote {
@@ -54,32 +53,22 @@
     width: 15%;
 }
 
-a {
-  text-decoration: none;
-  list-style: none;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-.comment-logo {
+.logo {
   filter: invert(0.5);
   height: 15px;
   width: 15px;
   margin-right: 10px;
 }
 
-.popup-box {
+.popupbox {
   padding: 15px;
   background-color: #404040;
   border-radius: 10px;
   border: 2px solid white;
 }
 
-.popup-overlay {
-  background:  rgba(100, 100, 100, 0.5);
-}
-
-.post > .vote {
+.vote {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }

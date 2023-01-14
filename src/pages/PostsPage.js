@@ -40,7 +40,7 @@ function PostsPage() {
                 <div>
                     <RatingPostCard ratingPost={ratingPost}/>
                 </div>
-                <hr/>
+                <div className="page-title">Feed</div>
                 <div className="post-list">
                     <PostsList posts={posts} />
                 </div>

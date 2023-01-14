@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import "../styles/PostCard.css"
 import UpvotePost from '../UpvotePost'
 import DownvotePost from '../DownvotePost';
 import axios from 'axios';
