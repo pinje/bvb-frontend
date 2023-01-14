@@ -1,0 +1,42 @@
+.buttonbox {
+    display: flex;
+    justify-content: end;
+}
+
+.title {
+    font-family: 'bold';
+    text-transform: uppercase;
+    font-size: 20px;
+    background-color: #FFD900;
+    color: #272729;;
+    margin-top: 10px;
+    padding: 5px 0 5px 10px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFD900;
+    width: fit-content;
+    padding: 10px 15px 10px 15px;
+    border-radius: 5px;
+    color: #202021;
+    cursor: pointer;
+    text-transform: uppercase;
+    -webkit-box-shadow: 2px 3px 0px 0px rgba(179, 152, 0);
+    border: 0;
+    margin-left: 15px;
+    font-family: 'semibold';
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.button:hover {
+    background-color: rgba(179, 152, 0);
+}
+
+.plus {
+    margin-right: 10px;
+    font-size: 20px;
+}

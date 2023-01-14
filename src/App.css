@@ -35,40 +35,9 @@
   text-transform: uppercase;
 }
 
-.add-post-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.add-post {
-  display: flex;
-  background-color: transparent;
-  color: yellow;
-  border: 1px solid;
-  padding: 5px;
-  border-radius: 5px;
-  font-weight: bolder;
-}
-
-.add-post:hover {
-  cursor: pointer;
-  background-color: yellow;
-  color: black;
-  transition: 0.5s;
-}
-
 .inner {
   width: 100%;
   padding: 4rem 10px 4rem;
-}
-
-.plus-button {
-  border-radius: 2px;
-  border: 1px solid yellow;
-  margin-right: 10px;
-  padding-left: 5px;
-  padding-right: 5px;
 }
 
 .post-list {
@@ -100,24 +69,30 @@
 .nav-item {
   margin: 0;
   padding: 0;
-  width: 150px;
+  width: fit-content;
 }
 
 .nav-link.active {
-  background-color: #202021;
-  border: 0;
-  padding: 5px;
   border-bottom: 3px solid #FFD900;
 }
 
 .nav-link {
-  background-color: #202021;
+  background-color: #272729;;
   color: #CECECE;
   font-family: 'Barlow';
   border: 0;
-  padding: 5px;
-  border-bottom: 3px solid #202021;
+  padding: 10px;
+  border-bottom: 3px solid #272729;;
   box-shadow: 1px 3px 1px 0px rgba(0, 0, 0, 0.4);
+}
+
+.nav-link.active:hover {
+  border-bottom: 3px solid #FFD900;
+}
+
+.nav-link:hover {
+  background-color: #202021;
+  border-bottom: 3px solid #202021;
 }
 
 .tab-content {

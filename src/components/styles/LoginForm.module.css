@@ -30,6 +30,10 @@ button {
     background-color: #ccc;
 }
 
+.inputtext:hover {
+    cursor: auto;
+}
+
 .submitbox {
     display: flex;
     justify-content: center;
