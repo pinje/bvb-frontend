@@ -1,10 +1,37 @@
-.opponent {
-    font-size: 20px;
+.ratingpost {
+    padding: 25px;
+    background-color: #3E3E40;
+    border-radius: 10px;
+    box-shadow: 1px 3px 1px 0px rgba(0, 0, 0, 0.4);
+}
+
+.pin {
+    height: 20px;
+    float: right;
+}
+
+.author {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 15px;
 }
 
 .title {
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
     display: flex;
-    align-items: baseline;
+    align-items: center;
+}
+
+.opponent {
+    font-size: 40px;
+    color: #FFD900;
+    font-family: 'bold';
+}
+
+.vs {
+    font-size: 20px;
 }
 
 .bundesliga {
@@ -18,13 +45,11 @@
 }
 
 .champions {
-    background-color: #00004B;
-    color: white;
+    height: 50px;
     padding: 5px;
-    font-size: 20px;
-    font-weight: bolder;
-    margin-right: 5px;
-    margin-top: 5px;
+    background-color: white;
+    border-radius: 10px;
+    margin-right: 10px;
 }
 
 .europa {
@@ -67,8 +92,13 @@
     margin-top: 5px;
 }
 
-.post-rating-post {
-    background-color: yellow;
+.vote {
+    display: flex;
+    justify-content: center;
+}
+
+.votebutton {
+    background-color: #FFD900;
     width: 80px;
     padding: 5px;
     border-radius: 5px;
@@ -76,6 +106,13 @@
     color: black;
     margin-top: 15px;
     cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bolder;
+    -webkit-box-shadow: 2px 3px 0px 0px rgba(179, 152, 0);
+}
+
+.votebutton:hover {
+    background-color: rgba(179, 152, 0);
 }
 
 

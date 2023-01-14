@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import moment from 'moment'
-import '../styles/RatingPostCard.css'
+import styles from '../styles/RatingPostCard.module.css'
+import c1 from '../../img/c1.png'
+import pin from '../../img/pin.png'
 
 function RatingPostCard(props) {
 
@@ -23,7 +25,7 @@ function RatingPostCard(props) {
             )
         } else if (tournament == "CHAMPIONS_LEAGUE") {
             return (
-                <div className="champions">Champions League</div>
+                <div><img src={c1} className={styles.champions}/></div>
             )
         } else if (tournament == "EUROPA_LEAGUE") {
             return (
@@ -45,13 +47,17 @@ function RatingPostCard(props) {
     }
 
     return (
-        <div className="post">
-            <div className="post-box">
-                <div className="author">posted @ {getTime()} ago</div>
-                <div className="title">{tournamentName(props.ratingPost.tournament)} <span className="opponent"> vs {props.ratingPost.opponent}</span></div>
-                <div className="content">Season {props.ratingPost.start_year}-{props.ratingPost.end_year} 
-                { props.ratingPost.matchday !== 0 && ` matchday ${props.ratingPost.matchday}` }</div>
-                <div className="post-rating-post">
+        <div className={styles.ratingpost}>
+            <img src={pin} className={styles.pin}/>
+            <div className={styles.author}>posted @ {getTime()} ago</div>
+            <div className={styles.title}>
+                {tournamentName(props.ratingPost.tournament)} 
+                <div className={styles.opponent}><span className={styles.vs}>vs</span> {props.ratingPost.opponent}</div>
+            </div>
+            <div>Season {props.ratingPost.start_year}-{props.ratingPost.end_year} 
+            { props.ratingPost.matchday !== 0 && ` matchday ${props.ratingPost.matchday}` }</div>
+            <div className={styles.vote}>
+                <div className={styles.votebutton}>
                     <NavLink to={`/vote/${props.ratingPost.id}`}>Vote!</NavLink>
                 </div>
             </div>

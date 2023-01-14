@@ -3,6 +3,11 @@
   src: url('../src/fonts/Barlow-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'bold';
+  src: url('../src/fonts/Barlow-Bold.ttf') format('truetype');
+}
+
 body {
   margin-top: 0;
   font-family: 'Barlow';
