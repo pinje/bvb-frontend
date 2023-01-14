@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from '../styles/Chat.module.css'
+import send from '../../img/send.png'
 
 const SendMessage = (props) => {
   const [message, setMessage] = useState('');
@@ -22,9 +23,9 @@ const SendMessage = (props) => {
   }
 
   return (
-    <form onSubmit={onSubmit}>
+    <form className={styles.sendbox} onSubmit={onSubmit}>
       <input id='message' type='text' onChange={(event) => setMessage(event.target.value)} value={message} className={styles.input}></input>
-      <button onClick={onMessageSend} className={styles.submitbutton}>Send</button>
+      <button onClick={onMessageSend} className={styles.submit}><img src={send} className={styles.logo} />Send</button>
     </form>
   );
 }

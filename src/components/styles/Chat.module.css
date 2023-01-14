@@ -1,10 +1,38 @@
+.chatpage {
+    margin-top: 74px;
+}
+
 .chatbox {
-    border: 1px solid yellow;
+    background-color: #3E3E40;
+    box-shadow: 1px 3px 1px 0px rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    height: 300px;
+    word-wrap: break-word;
+    overflow: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.offlinechatbox {
+    background-color: #3E3E40;
+    box-shadow: 1px 3px 1px 0px rgba(0, 0, 0, 0.4);
     padding: 10px;
     height: 300px;
     overflow: scroll;
     margin-bottom: 20px;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}   
+
+.info {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-family: 'bold';
+    margin-bottom: 20px;
 }
 
 .online {
@@ -12,32 +40,83 @@
 }
 
 .offline {
-    color: red;
+    color:#C3362B;
+}
+
+.sendbox {
+    display: flex;
+    justify-content: space-between;
 }
 
 .input {
-    font-size: 1rem;
-    font-weight: 400;
-    width: 85%;
-    padding: 10px;
-    border-radius: 5px;
+    font-family: 'semibold';
+    border: 0;
+    width: 80%;
+    padding: 15px;
+    border-radius: 10px;
     margin-bottom: 10px;
-    background-color: #ccc;
-    outline: none;
-    border: none;
+    background-color: #CECECE;
+    color: #202021;
+    text-align: left;
+    box-shadow: 1px 3px 1px 0px rgba(0, 0, 0, 0.4);
+    font-size: 17px;
 }
 
-.submitbutton {
-    background-color: yellow;
-    margin-left: 10px;
-    font-weight: bolder;
-    border: 0;
-    padding: 10px;
+.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFD900;
+    width: 20%;
+    padding: 5px 10px 5px 10px;
     border-radius: 5px;
-    width: 100px;
+    color: #202021;
     cursor: pointer;
+    text-transform: uppercase;
+    -webkit-box-shadow: 2px 3px 0px 0px rgba(179, 152, 0);
+    border: 0;
+    font-family: 'semibold';
+    font-size: 15px;
+    height: 50px;
+}
+
+.submit:hover {
+    background-color: rgba(179, 152, 0);
 }
 
 .message {
     text-transform: uppercase;
+}
+
+.logo {
+    height: 50px;
+    margin-right: 10px;
+    filter: invert(0.7);
+}
+
+.button {
+    border-radius: 50px;
+    width: fit-content;
+    padding: 10px 15px 10px 15px;
+    display: flex;
+    align-items: center;
+    font-family: 'semibold';
+    background-color: #FFD900;
+    border: 0;
+    cursor: pointer;
+    -webkit-box-shadow: 2px 3px 0px 0px rgba(179, 152, 0);
+    font-size: 20px;
+}
+
+.button:hover {
+    background-color: rgba(179, 152, 0);
+}
+
+.logo {
+    height: 20px;
+    filter: invert(0);
+}
+
+.own {
+    color: #FFD900;
 }

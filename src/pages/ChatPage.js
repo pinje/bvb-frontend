@@ -7,6 +7,8 @@ import { useAuth } from '../components/context/AuthProvider';
 import { v4 as uuidv4 } from 'uuid';
 import jwt_decode from 'jwt-decode'
 import styles from '../components/styles/Chat.module.css'
+import nocloud from '../img/nocloud.png'
+import { Navigate, useLocation } from 'react-router-dom';
 
 var stompClient=null;
 
@@ -18,6 +20,11 @@ const ChatPage = () => {
     });
     const [messagesReceived, setMessagesReceived] = useState([]);
     const [connection, setConnection] = useState(false);
+    const location = useLocation();
+
+    if (auth === 0) {
+        return <Navigate to="/AuthError" state={{ from: location }}></Navigate>
+    }
 
     const registerUser = () => {
         let socket = new SockJS("http://localhost:8080/ws");
@@ -50,13 +57,33 @@ const ChatPage = () => {
         setMessagesReceived(messagesReceived => [...messagesReceived, message]);
     }
 
+    function connected() {
+        if (connection) {
+            return (
+                <div>
+                    <span className={styles.online}>● </span>You are Online 
+                    <ChatMessages user={user.username} messagesReceived={messagesReceived} />
+                    <SendMessage user={user.username} onMessageSend={sendMessage} />
+                </div>
+            )
+        } else {
+            return (
+                <div className={styles.offlinechatbox}>
+                    <div className={styles.info}>
+                        <img src={nocloud} className={styles.logo}/><span className={styles.offline}>You are Offline</span>
+                    </div>
+                    <div>
+                        <button className={styles.button} onClick={registerUser}>connect to chat</button>
+                    </div>
+                </div>
+            )
+        }
+    }
+
     return (
-        <div>
-            <ChatMessages user={user.username} messagesReceived={messagesReceived} />
-            {connection ? 
-            <div><span className={styles.online}>● </span>You are Online <SendMessage user={user.username} onMessageSend={sendMessage} /></div> 
-            : 
-            <div><div><span className={styles.offline}>● </span>You are Offline</div><button onClick={registerUser}>connect to chat</button></div>}
+        <div className={styles.chatpage}>
+            <div className='page-title'>CHATROOM</div>
+            {connected()}
         </div>
     )
 }
