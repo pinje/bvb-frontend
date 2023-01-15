@@ -18,7 +18,7 @@ function RatingPost(props) {
 
     const [players, setPlayers] = useState([]);
     const [error, setError] = useState("");
-    const [alreadyVoted, setAlreadyVoted] = useState();
+    const [alreadyVoted, setAlreadyVoted] = useState(true);
     const { auth } = useAuth();
     const navigate = useNavigate();
 
@@ -55,7 +55,7 @@ function RatingPost(props) {
         } else {
             return (
                 <div>
-                    <VoteForm players={players} ratingPostId={6}/>
+                    <VoteForm players={players} ratingPostId={parsedId}/>
                 </div>
             )
         }

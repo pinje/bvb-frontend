@@ -1,19 +1,18 @@
 import React, { useState } from "react"
-import '../styles/CommentFormDeny.module.css'
+import styles from '../styles/CommentFormDeny.module.css'
 import { NavLink, useNavigate } from "react-router-dom";
 
 function VoteFormDeny() {
 
     return (
         <div>
-            <div className="title">Vote</div>
-            <div className="form-container-deny-box">
-                <div className="text">
+            <div className={styles.denybox}>
+                <div className={styles.text}>
                     Login or Signup to vote
                 </div>
-                <div className="form-container-deny">
+                <div className={styles.deny}>
                     <NavLink to={"/login"}>login</NavLink>
-                    or
+                    OR
                     <NavLink to={"/signup"}>signup</NavLink>
                 </div>
             </div>
