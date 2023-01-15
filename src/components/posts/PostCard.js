@@ -175,7 +175,7 @@ function PostCard(props) {
                 })
 
             // update post table vote count
-            axios.put("http://localhost:8080/posts/" + props.post.id + "/upvote", null, config)
+            axios.put("http://localhost:8080/posts/" + props.post.id + "/downvote", null, config)
             .then(() => setVote(vote - 1), setUserVote(-1))
         }
       };
