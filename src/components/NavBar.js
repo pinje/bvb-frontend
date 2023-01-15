@@ -4,6 +4,7 @@ import styles from './styles/NavBar.module.css'
 import logo from '../img/bvb.png'
 import { useNavigate } from "react-router";
 import { useAuth } from "./context/AuthProvider";
+import SearchBar from "./search/SearchBar";
 
 function NavBar() {
 
@@ -46,20 +47,27 @@ function NavBar() {
     return (
         <div>
             <nav className={styles.navBar}>
-                <img src={logo}/>
-                {links.map(link => {
-                    return (
-                        <li key={link.id}>
-                            <NavLink to={link.path}>
-                                {link.text}
-                            </NavLink>
-                        </li>
-                    )
-                })}
-                <li> <NavLink onClickCapture={logout}>Logout</NavLink></li>
+                <div className={styles.logo}><img src={logo}/></div>
+                <div classname={styles.navbox}>
+                    <div className={styles.navelement}>
+                        {links.map(link => {
+                        return (
+                            <li key={link.id}>
+                                <NavLink to={link.path}>
+                                    {link.text}
+                                </NavLink>
+                            </li>
+                        )
+                        })}
+                    </div>
+                    <div className={styles.searchbox}>
+                        <SearchBar/>
+                    </div>
+                </div>
+                <div className={styles.auth}>
+                    <li><NavLink onClickCapture={logout}>Logout</NavLink></li>
+                </div>
             </nav>
-            <input className={styles.input}></input>
-            <hr/>
         </div>
     )
 }
