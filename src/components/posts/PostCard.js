@@ -110,10 +110,12 @@ function PostCard(props) {
         } else if (userVote == -1) {
             // was downvoted, add 2
             // find and update
-            axios.put("http://localhost:8080/alreadyvoted?postId=" + props.post.id + "&userId=" + auth.id, null, config);
+            axios.put("http://localhost:8080/votes?postId=" + props.post.id + "&userId=" + auth.id);
 
             // update post table vote count
+            
             axios.put("http://localhost:8080/posts/" + props.post.id + "/upvote", null, config)
+            .then(() => axios.put("http://localhost:8080/posts/" + props.post.id + "/upvote", null, config))
             .then(() => setVote(vote + 2), setUserVote(1));
 
             
@@ -148,10 +150,11 @@ function PostCard(props) {
         if (userVote == 1) {
             // upvoted, downvote -1
             // find and update
-            axios.put("http://localhost:8080/alreadyvoted?postId=" + props.post.id + "&userId=" + auth.id, {}, {headers: { 'Access-Control-Allow-Origin': '*' }});
+            axios.put("http://localhost:8080/votes?postId=" + props.post.id + "&userId=" + auth.id);
 
             // update post table vote count
             axios.put("http://localhost:8080/posts/" + props.post.id + "/downvote", null, config)
+            .then(() => axios.put("http://localhost:8080/posts/" + props.post.id + "/downvote", null, config))
             .then(() => setVote(vote - 2), setUserVote(-1));
         } else if (userVote == -1) {
             // was already downvoted, make it neutral +1

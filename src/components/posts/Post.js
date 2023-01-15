@@ -114,45 +114,51 @@ function Post(props) {
     const handleUpvote = () => {
         // from here user is allowed to upvote
         const config = {
-            headers: { Authorization: `Bearer ${auth.accessToken}` }
+            headers: { Authorization: `Bearer ${auth.accessToken}` },
+            'Access-Control-Allow-Origin': 'http://localhost:8080'
         }
 
         const newVote = {
             "type": true,
             "user": auth.id,
-            "post": parsedId
+            "post": props.post.id
         }
 
         // update vote table 
         if (userVote == 1) {
             // already upvoted, deselect and make it neutral
             // delete vote entity
-            axios.delete("http://localhost:8080/votes?postId=" + parsedId + "&userId=" + auth.id);
+            axios.delete("http://localhost:8080/votes?postId=" + props.post.id + "&userId=" + auth.id, null, config)
+            .then(() => {
+                console.log("vote deleted");
+            })
+            .catch(error => console.log(error));
 
             // update post table vote count
-            axios.put("http://localhost:8080/posts/" + parsedId + "/downvote", null, config)
+            axios.put("http://localhost:8080/posts/" + props.post.id + "/downvote", null, config)
             .then(() => setVote(vote - 1), setUserVote(0));
             
         } else if (userVote == -1) {
             // was downvoted, add 2
             // find and update
-            axios.put("http://localhost:8080/alreadyvoted?postId=" + parsedId + "&userId=" + auth.id);
+            axios.put("http://localhost:8080/votes?postId=" + props.post.id + "&userId=" + auth.id);
 
             // update post table vote count
-            axios.put("http://localhost:8080/posts/" + parsedId + "/upvote", null, config)
+            axios.put("http://localhost:8080/posts/" + props.post.id + "/upvote", null, config)
+            .then(() => axios.put("http://localhost:8080/posts/" + props.post.id + "/upvote", null, config))
             .then(() => setVote(vote + 2), setUserVote(1));
 
             
         } else {
             // was neutral, add 1
             // create
-            axios.post("http://localhost:8080/votes", newVote)
+            axios.post("http://localhost:8080/votes", newVote, config)
                 .then(response => {
                     console.log("Vote added successfully: " + response.data.voteId);
                 })
 
             // update post table vote count
-            axios.put("http://localhost:8080/posts/" + parsedId + "/upvote", null, config)
+            axios.put("http://localhost:8080/posts/" + props.post.id + "/upvote", null, config)
             .then(() => setVote(vote + 1), setUserVote(1));
         }
       };
@@ -160,42 +166,48 @@ function Post(props) {
       const handleDownvote = () => {
         // from here user is allowed to downvote
         const config = {
-            headers: { Authorization: `Bearer ${auth.accessToken}` }
+            headers: { Authorization: `Bearer ${auth.accessToken}` },
+            'Access-Control-Allow-Origin': 'http://localhost:3000'
         }
 
         const newVote = {
             "type": false,
             "user": auth.id,
-            "post": parsedId
+            "post": props.post.id
         }
 
         // update vote table 
         if (userVote == 1) {
             // upvoted, downvote -1
             // find and update
-            axios.put("http://localhost:8080/alreadyvoted?postId=" + parsedId + "&userId=" + auth.id);
+            axios.put("http://localhost:8080/votes?postId=" + props.post.id + "&userId=" + auth.id);
 
             // update post table vote count
-            axios.put("http://localhost:8080/posts/" + parsedId + "/downvote", null, config)
+            axios.put("http://localhost:8080/posts/" + props.post.id + "/downvote", null, config)
+            .then(() => axios.put("http://localhost:8080/posts/" + props.post.id + "/downvote", null, config))
             .then(() => setVote(vote - 2), setUserVote(-1));
         } else if (userVote == -1) {
             // was already downvoted, make it neutral +1
             // delete
-            axios.delete("http://localhost:8080/votes?postId=" + parsedId + "&userId=" + auth.id);
+            axios.delete("http://localhost:8080/votes?postId=" + props.post.id + "&userId=" + auth.id, null, config)
+            .then(() => {
+                console.log("vote deleted")
+            })
+            .catch(error => console.log(error));
 
             // update post table vote count
-            axios.put("http://localhost:8080/posts/" + parsedId + "/upvote", null, config)
+            axios.put("http://localhost:8080/posts/" + props.post.id + "/upvote", null, config)
             .then(() => setVote(vote + 1), setUserVote(0));
         } else {
             // was neutral, minus 1
             // create
-            axios.post("http://localhost:8080/votes", newVote)
+            axios.post("http://localhost:8080/votes", newVote, config)
                 .then(response => {
                     console.log("Vote added successfully: " + response.data.voteId);
                 })
 
             // update post table vote count
-            axios.put("http://localhost:8080/posts/" + parsedId + "/upvote", null, config)
+            axios.put("http://localhost:8080/posts/" + props.post.id + "/upvote", null, config)
             .then(() => setVote(vote - 1), setUserVote(-1))
         }
       };
