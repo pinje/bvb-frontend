@@ -5,6 +5,7 @@ import logo from '../img/bvb.png'
 import { useNavigate } from "react-router";
 import { useAuth } from "./context/AuthProvider";
 import SearchBar from "./search/SearchBar";
+import out from '../img/logout.png';
 
 function AdminNavBar() {
 
@@ -70,7 +71,7 @@ function AdminNavBar() {
                     </div>
                 </div>
                 <div className={styles.auth}>
-                    <li><NavLink onClickCapture={logout}>Logout</NavLink></li>
+                    <li><NavLink onClickCapture={logout}>Logout <img src={out} className={styles.navicon}/></NavLink></li>
                 </div>
             </nav>
         </div>

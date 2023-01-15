@@ -68,8 +68,21 @@ li a {
   grid-column-start: 3;
 }
 
+.auth > li > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .logo {
   display: flex;
   justify-content: start;
   align-items: center;
+}
+
+.navicon {
+  height: 40px;
+  width: 40px;
+  margin-right: 0;
+  margin-left: 10px;
 }
