@@ -60,7 +60,7 @@ function DeletePlayerForm() {
                     {playersList.map(player => {
                         return (
                             <option value={player.id}>
-                                {player.firstname} {player.lastname}
+                                {player.firstname.charAt(0).toUpperCase() + player.firstname.slice(1)} {player.lastname.charAt(0).toUpperCase() + player.lastname.slice(1)}
                             </option>
                         )
                     })}
