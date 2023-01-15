@@ -63,7 +63,7 @@ function EditPostForm(props) {
             <div className="page-title">Edit post</div>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <div>Title</div>
+                    <div className={styles.title}>Title</div>
                     <input
                         type="text"
                         className="input-text"
@@ -72,7 +72,7 @@ function EditPostForm(props) {
                         defaultValue={props.post.title}/>
                 </div>
                 <div>
-                    <div>Text</div>
+                    <div className={styles.title}>Text</div>
                     <textarea
                         type="text"
                         className="input-text-content"

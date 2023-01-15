@@ -23,7 +23,6 @@ function Comment(props) {
         axios.delete("http://localhost:8080/comments/" + commentId, config)
         .then(response => {
             console.log(`Comment deleted ID: ${commentId}`);
-            navigate("/successdelete");
         })
         .catch(() => setError("Incorrect entry."));
     }
@@ -35,7 +34,7 @@ function Comment(props) {
     const handleConfirmClick = () => {
         deleteComment(selectedItem);
         setSelectedItem(null);
-        navigate("/");
+        navigate("/successdelete");
     };
 
     function authorizeToDelete(auth) {

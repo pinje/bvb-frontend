@@ -68,7 +68,7 @@ function PostForm(props) {
                     />
                 </div>
             <div>
-                <button className={styles.submit}>Post</button>
+                <button className={styles.submit}>Create Post</button>
                 <div className="error">{error}</div>
             </div>
             </form>
