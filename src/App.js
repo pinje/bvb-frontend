@@ -19,6 +19,7 @@ import AddPlayer from './pages/AddPlayer'
 import DeletePlayer from './pages/DeletePlayer'
 import VotePage from './pages/VotePage'
 import EditPostPage from './pages/EditPostPage'
+import SearchPage from './pages/SearchPage'
 
 function App() {
   const { auth } = useAuth();
@@ -53,6 +54,7 @@ function App() {
           <Route path="/deleteplayer" element={<DeletePlayer />} />
           <Route path="/vote/:id" element={<VotePage />} />
           <Route path="/editpost/:id" element={<EditPostPage />} />
+          <Route path="/search/:query" element={<SearchPage />} />
         </Routes>
       </Router>
     </div>
