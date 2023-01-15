@@ -22,25 +22,25 @@
 }
 
 .logo {
-    filter: invert(0);
+    filter: invert(0.7);
     height: 15px;
     width: 15px;
 }
 
 .button {
     border-radius: 50px;
-    padding: 15px;
+    padding: 10px;
     display: flex;
     font-family: 'semibold';
-    background-color: #FFD900;
+    background-color: #202021;
     border: 0;
     cursor: pointer;
-    -webkit-box-shadow: 1px 2px 0px 0px rgba(179, 152, 0);
+    -webkit-box-shadow: 1px 2px 0px 0px rgba(0,0,0,0.4);
     font-size: 15px;
 }
 
 .button:hover {
-    background-color: rgba(179, 152, 0);
+    background-color: rgba(0,0,0,0.4);
 }
 
 .popupbox {
@@ -88,4 +88,9 @@
   
   .cancel:hover {
     background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .buttonbox {
+    display: flex;
+    align-items: center;
   }

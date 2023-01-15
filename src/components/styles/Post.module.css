@@ -20,8 +20,8 @@
 
 .title {
   text-transform: uppercase;
-  font-size: 40px;
-  color: #FFD900;
+  font-size: 30px;
+  color: #CECECE;
   font-family: 'bold';
 }
 
@@ -44,7 +44,7 @@
 }
 
 .logo {
-  filter: invert(0);
+  filter: invert(0.1);
   height: 15px;
   width: 15px;
   margin-right: 10px;

@@ -20,7 +20,7 @@
 
 .title {
   text-transform: uppercase;
-  font-size: 40px;
+  font-size: 30px;
   color: #CECECE;
   font-family: 'bold';
 }
@@ -78,21 +78,21 @@
   padding: 10px;
   display: flex;
   font-family: 'semibold';
-  background-color: #FFD900;
+  background-color: #202021;
   border: 0;
   cursor: pointer;
-  -webkit-box-shadow: 1px 2px 0px 0px rgba(179, 152, 0);
+  -webkit-box-shadow: 1px 2px 0px 0px rgba(0,0,0,0.4);
   font-size: 15px;
   margin-bottom: 10px;
 }
 
 .button > .logo {
   margin-right: 0;
-  filter: invert(0);
+  filter: invert(0.7);
 }
 
 .button:hover {
-  background-color: rgba(179, 152, 0);
+  background-color: rgba(0,0,0,0.4);
 }
 
 .submit {

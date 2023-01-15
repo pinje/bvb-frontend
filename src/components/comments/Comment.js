@@ -90,7 +90,7 @@ function Comment(props) {
                     {props.comment.comment}
                 </div>
             </div>
-            <div>
+            <div className={styles.buttonbox}>
                 {authorizeToDelete(auth.id)}
             </div>
         </div>
