@@ -5,7 +5,7 @@ function PostsList(props) {
 
   return (
     <div>
-      {props.posts.map(post => (
+      {props.posts.sort((a, b) => b.vote - a.vote).map(post => (
         <PostCard key={post.id} post={post} />
       ))}
     </div>
