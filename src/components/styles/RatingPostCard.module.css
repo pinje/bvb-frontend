@@ -35,62 +35,12 @@
     font-size: 20px;
 }
 
-.bundesliga {
-    background-color: #D20214;
-    color: white;
-    padding: 5px;
-    font-size: 20px;
-    font-weight: bolder;
-    margin-right: 5px;
-    margin-top: 5px;
-}
-
-.champions {
+.logo {
     height: 50px;
     padding: 5px;
-    background-color: white;
+    background-color: #CECECE;
     border-radius: 10px;
     margin-right: 10px;
-}
-
-.europa {
-    background-color: #FE6802;
-    color: white;
-    padding: 5px;
-    font-size: 20px;
-    font-weight: bolder;
-    margin-right: 5px;
-    margin-top: 5px;
-}
-
-.conference {
-    background-color: #00BB11;
-    color: white;
-    padding: 5px;
-    font-size: 20px;
-    font-weight: bolder;
-    margin-right: 5px;
-    margin-top: 5px;
-}
-
-.pokal {
-    background-color: white;
-    color: black;
-    padding: 5px;
-    font-size: 20px;
-    font-weight: bolder;
-    margin-right: 5px;
-    margin-top: 5px;
-}
-
-.friendly {
-    background-color: purple;
-    color: white;
-    padding: 5px;
-    font-size: 20px;
-    font-weight: bolder;
-    margin-right: 5px;
-    margin-top: 5px;
 }
 
 .vote {

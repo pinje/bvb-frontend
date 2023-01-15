@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react"
 import styles from "../styles/PostCard.module.css"
-import UpvotePost from '../UpvotePost'
-import DownvotePost from '../DownvotePost';
 import axios from 'axios';
 import { NavLink } from "react-router-dom";
 import commentlogo from '../../img/comment.png';
@@ -217,30 +215,40 @@ function PostCard(props) {
     }
 
     function button() {
-        if (userVote == 1) {
+        if (auth.id == 0) {
             return (
                 <div>
-                    <button onClick={handleUpvote}>up</button>
+                    <button onClick={() => navigate("/signup")}>-</button>
                     {vote}
-                    <button onClick={handleDownvote}>-</button>
-                </div>
-            )
-        } else if (userVote == 0) {
-            return(
-                <div>
-                    <button onClick={handleUpvote}>-</button>
-                    {vote}
-                    <button onClick={handleDownvote}>-</button>
+                    <button onClick={() => navigate("/signup")}>-</button>
                 </div>
             )
         } else {
-            return(
-                <div>
-                    <button onClick={handleUpvote}>-</button>
-                    {vote}
-                    <button onClick={handleDownvote}>down</button>
-                </div>
-            )
+            if (userVote == 1) {
+                return (
+                    <div>
+                        <button onClick={handleUpvote}>up</button>
+                        {vote}
+                        <button onClick={handleDownvote}>-</button>
+                    </div>
+                )
+            } else if (userVote == 0) {
+                return(
+                    <div>
+                        <button onClick={handleUpvote}>-</button>
+                        {vote}
+                        <button onClick={handleDownvote}>-</button>
+                    </div>
+                )
+            } else {
+                return(
+                    <div>
+                        <button onClick={handleUpvote}>-</button>
+                        {vote}
+                        <button onClick={handleDownvote}>down</button>
+                    </div>
+                )
+            }
         }
     }
     

@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react"
-import UpvotePost from '../UpvotePost'
-import DownvotePost from '../DownvotePost';
 import axios from 'axios';
 import CommentsList from '../comments/CommentsList'
 import CommentForm from "../comments/CommentForm";
@@ -147,9 +145,6 @@ function Post(props) {
         <div>
             <div className={styles.post}>
                 <div className={styles.vote}>
-                    <UpvotePost upvote={upvote} />
-                    {props.post.vote}
-                    <DownvotePost downvote={downvote} />
                 </div>
                 <div className={styles.postbox}>
                     <div className={styles.author}>Posted by {props.post.username} @ {getTime()} ago</div>

@@ -3,6 +3,11 @@ import moment from 'moment'
 import styles from '../styles/RatingPostCard.module.css'
 import c1 from '../../img/c1.png'
 import pin from '../../img/pin.png'
+import bundes from '../../img/bundes.png'
+import pokal from '../../img/pokal.png'
+import europa from '../../img/europa.png'
+import conference from '../../img/conference.png'
+import friendly from '../../img/friendly.png'
 
 function RatingPostCard(props) {
 
@@ -21,27 +26,27 @@ function RatingPostCard(props) {
     function tournamentName(tournament) {
         if (tournament == "BUNDESLIGA") {
             return (
-                <div className="bundesliga">Bundesliga</div>
+                <div><img src={bundes} className={styles.logo}/></div>
             )
         } else if (tournament == "CHAMPIONS_LEAGUE") {
             return (
-                <div><img src={c1} className={styles.champions}/></div>
+                <div><img src={c1} className={styles.logo}/></div>
             )
         } else if (tournament == "EUROPA_LEAGUE") {
             return (
-                <div className="europa">Europa League</div>
+                <div><img src={europa} className={styles.logo}/></div>
             )
         } else if (tournament == "CONFERENCE_LEAGUE") {
             return (
-                <div className="conference">Conference League</div>
+                <div><img src={conference} className={styles.logo}/></div>
             )
         } else if (tournament == "DFB_CUP") {
             return (
-                <div className="pokal">DFB Pokal</div>
+                <div><img src={pokal} className={styles.logo}/></div>
             )
         } else if (tournament == "FRIENDLY") {
             return (
-                <div className="friendly">Friendly</div>
+                <div><img src={friendly} className={styles.logo}/></div>
             )
         }
     }
