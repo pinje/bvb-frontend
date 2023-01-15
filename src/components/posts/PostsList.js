@@ -5,8 +5,8 @@ function PostsList(props) {
   return (
     <div>
       {props.posts.sort((a, b) => {
-        const voteWeight = 0.4;
-        const dateWeight = 0.6;
+        const voteWeight = 1;
+        const dateWeight = 0;
 
         const scoreA = a.vote * voteWeight + new Date(a.date).getTime() * dateWeight;
         const scoreB = b.vote * voteWeight + new Date(b.date).getTime() * dateWeight;
