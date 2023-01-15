@@ -65,7 +65,7 @@ function NavBar() {
                     </div>
                 </div>
                 <div className={styles.auth}>
-                    <li><NavLink onClickCapture={logout}>Logout</NavLink></li>
+                    <li><NavLink onClickCapture={logout}>Logout <img src={out} className={styles.navicon}/></NavLink></li>
                 </div>
             </nav>
         </div>
