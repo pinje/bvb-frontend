@@ -10,24 +10,37 @@ import Popup from "reactjs-popup";
 import moment from 'moment'
 import editLogo from '../../img/edit.png';
 import styles from "../styles/Post.module.css"
+import upvote from '../../img/upvote.png'
+import downvote from '../../img/downvote.png'
+import upvotefill from '../../img/upvote-fill.png'
+import downvotefill from '../../img/downvote-fill.png'
+import { useParams } from "react-router-dom";
 
 function Post(props) {
 
-    const [comments, setComments] = useState([]);
-    const [error, setError] = useState("");
     const { auth } = useAuth();
     const navigate = useNavigate();
 
-    const upvote = () => {
-        axios.put("http://localhost:8080/posts/" + props.post.id + "/upvote");
-    }
+    const params = useParams();
+    const parsedId = Number(params.id);
 
-    const downvote = () => {
-        axios.put("http://localhost:8080/posts/" + props.post.id + "/downvote");
-    }
+    const [vote, setVote] = useState();
+    const [comments, setComments] = useState([]);
+    const [error, setError] = useState("");
+    const [userVote, setUserVote] = useState(0);
+    const [author, setAuthor] = useState(false);
+
+    const getPost = () => {
+        const postId = parsedId;
+        axios.get("http://localhost:8080/posts/" + postId)
+        .then(response => {
+            setVote(response.data.vote);
+        })
+        .catch(error => console.log(error));
+    };
 
     const getComments = () => {
-        const postId = props.post.id;
+        const postId = parsedId;
         axios.get("http://localhost:8080/comments/post?postId=" + postId)
         .then(response => {
             setComments(response.data.comments);
@@ -43,7 +56,7 @@ function Post(props) {
         const newComment = {
             "comment": comment,
             "userId": auth.id,
-            "postId": props.post.id
+            "postId": parsedId
         }
 
         axios.post("http://localhost:8080/comments", newComment, config)
@@ -67,7 +80,133 @@ function Post(props) {
         .catch(setError("Incorrect entry."));
     }
 
-    useEffect(() => getComments, []);
+    // check if user already upvote, downvoted or not
+    const checkUpvoted = () => {
+        axios.get("http://localhost:8080/votes/alreadyupvoted?postId=" 
+        + parsedId + "&userId=" + auth.id)
+        .then(response => {
+            if (response.data) {
+                setUserVote(1);
+            }
+        })
+        .catch(error => console.log(error));
+    }
+
+    const checkDownvoted = () => {
+        axios.get("http://localhost:8080/votes/alreadydownvoted?postId=" 
+        + parsedId + "&userId=" + auth.id)
+        .then(response => {
+            if (response.data) {
+                setUserVote(-1);
+            }
+        })
+        .catch(error => console.log(error));
+    }
+
+    function checkAuthor() {
+        if (auth.id === props.post.userId) {
+            setAuthor(true);
+        } else {
+            setAuthor(false);
+        }
+    }
+
+    const handleUpvote = () => {
+        // from here user is allowed to upvote
+        const config = {
+            headers: { Authorization: `Bearer ${auth.accessToken}` }
+        }
+
+        const newVote = {
+            "type": true,
+            "user": auth.id,
+            "post": parsedId
+        }
+
+        // update vote table 
+        if (userVote == 1) {
+            // already upvoted, deselect and make it neutral
+            // delete vote entity
+            axios.delete("http://localhost:8080/votes?postId=" + parsedId + "&userId=" + auth.id);
+
+            // update post table vote count
+            axios.put("http://localhost:8080/posts/" + parsedId + "/downvote", null, config)
+            .then(() => setVote(vote - 1), setUserVote(0));
+            
+        } else if (userVote == -1) {
+            // was downvoted, add 2
+            // find and update
+            axios.put("http://localhost:8080/alreadyvoted?postId=" + parsedId + "&userId=" + auth.id);
+
+            // update post table vote count
+            axios.put("http://localhost:8080/posts/" + parsedId + "/upvote", null, config)
+            .then(() => setVote(vote + 2), setUserVote(1));
+
+            
+        } else {
+            // was neutral, add 1
+            // create
+            axios.post("http://localhost:8080/votes", newVote)
+                .then(response => {
+                    console.log("Vote added successfully: " + response.data.voteId);
+                })
+
+            // update post table vote count
+            axios.put("http://localhost:8080/posts/" + parsedId + "/upvote", null, config)
+            .then(() => setVote(vote + 1), setUserVote(1));
+        }
+      };
+    
+      const handleDownvote = () => {
+        // from here user is allowed to downvote
+        const config = {
+            headers: { Authorization: `Bearer ${auth.accessToken}` }
+        }
+
+        const newVote = {
+            "type": false,
+            "user": auth.id,
+            "post": parsedId
+        }
+
+        // update vote table 
+        if (userVote == 1) {
+            // upvoted, downvote -1
+            // find and update
+            axios.put("http://localhost:8080/alreadyvoted?postId=" + parsedId + "&userId=" + auth.id);
+
+            // update post table vote count
+            axios.put("http://localhost:8080/posts/" + parsedId + "/downvote", null, config)
+            .then(() => setVote(vote - 2), setUserVote(-1));
+        } else if (userVote == -1) {
+            // was already downvoted, make it neutral +1
+            // delete
+            axios.delete("http://localhost:8080/votes?postId=" + parsedId + "&userId=" + auth.id);
+
+            // update post table vote count
+            axios.put("http://localhost:8080/posts/" + parsedId + "/upvote", null, config)
+            .then(() => setVote(vote + 1), setUserVote(0));
+        } else {
+            // was neutral, minus 1
+            // create
+            axios.post("http://localhost:8080/votes", newVote)
+                .then(response => {
+                    console.log("Vote added successfully: " + response.data.voteId);
+                })
+
+            // update post table vote count
+            axios.put("http://localhost:8080/posts/" + parsedId + "/upvote", null, config)
+            .then(() => setVote(vote - 1), setUserVote(-1))
+        }
+      };
+
+    useEffect(() => {
+        getPost();
+        getComments();
+        checkUpvoted();
+        checkDownvoted();
+        checkAuthor();
+      }, []);
 
     function condition(auth) {
         if(auth === 0) {
@@ -104,8 +243,8 @@ function Post(props) {
         } else if (auth === props.post.userId) {
             return (
                 <div className={styles.footer}>
-                    <button className={styles.button} onClick={() => navigate("/editpost/" + props.post.id)}><img className={styles.logo} src={editLogo}/>Edit</button>
-                    <button className={styles.button} onClick={() => handleDeleteClick(props.post.id)}><img className={styles.logo} src={deleteLogo}/>Delete</button>
+                    <button className={styles.button} onClick={() => navigate("/editpost/" + parsedId)}><img className={styles.logo} src={editLogo}/>Edit</button>
+                    <button className={styles.button} onClick={() => handleDeleteClick(parsedId)}><img className={styles.logo} src={deleteLogo}/>Delete</button>
                     <Popup
                         className={styles.popup}
                         open={selectedItem !== null}
@@ -140,11 +279,50 @@ function Post(props) {
             difference.humanize()
         )
     }
+
+    function button() {
+        if (auth.id == 0) {
+            return (
+                <div className={styles.votebox}>
+                    <button onClick={() => navigate("/signup")} className={styles.voteneutral}><img src={upvote}/></button>
+                    <div className={styles.count}>{vote}</div>
+                    <button onClick={() => navigate("/signup")} className={styles.voteneutral}><img src={downvote}/></button>
+                </div>
+            )
+        } else {
+            if (userVote == 1) {
+                return (
+                    <div className={styles.votebox}>
+                        <button onClick={handleUpvote} className={styles.voteneutral}><img src={upvotefill}/></button>
+                        <div className={styles.count}>{vote}</div>
+                        <button onClick={handleDownvote} className={styles.voteneutral}><img src={downvote}/></button>
+                    </div>
+                )
+            } else if (userVote == 0) {
+                return(
+                    <div className={styles.votebox}>
+                        <button onClick={handleUpvote} className={styles.voteneutral}><img src={upvote}/></button>
+                        <div className={styles.count}>{vote}</div>
+                        <button onClick={handleDownvote} className={styles.voteneutral}><img src={downvote}/></button>
+                    </div>
+                )
+            } else {
+                return(
+                    <div className={styles.votebox}>
+                        <button onClick={handleUpvote} className={styles.voteneutral}><img src={upvote}/></button>
+                        <div className={styles.count}>{vote}</div>
+                        <button onClick={handleDownvote} className={styles.voteneutral}><img src={downvotefill}/></button>
+                    </div>
+                )
+            }
+        }
+    }
     
     return (
         <div>
             <div className={styles.post}>
                 <div className={styles.vote}>
+                    {button()}
                 </div>
                 <div className={styles.postbox}>
                     <div className={styles.author}>Posted by {props.post.username} @ {getTime()} ago</div>

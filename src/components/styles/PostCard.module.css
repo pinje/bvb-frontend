@@ -1,5 +1,5 @@
 .post {
-    padding: 25px;
+    padding: 25px 25px 25px 15px;
     border-radius: 10px;
     display: flex;
     margin-bottom: 20px;
@@ -21,7 +21,7 @@
 .title {
   text-transform: uppercase;
   font-size: 40px;
-  color: #FFD900;
+  color: #CECECE;
   font-family: 'bold';
 }
 
@@ -133,4 +133,28 @@
 
 .cancel:hover {
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+.voteneutral {
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+}
+
+.voteneutral > img {
+  height: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.votebox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.count {
+  font-family: 'semibold';
+  font-size: 20px;
 }
