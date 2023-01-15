@@ -1,7 +1,7 @@
 function SuccessPage() {
     return (
         <div>
-            <div>Posted succesfully!</div>
+            <div className="success">Posted succesfully!</div>
         </div>
     )
 }

@@ -38,7 +38,7 @@ function EditPostForm(props) {
         axios.put("http://localhost:8080/posts/" + props.post.id, newPost, config)
         .then(response => {
             console.log(`Post edited`);
-            nagivate("/");
+            nagivate("/success");
         })
         .catch(() => setError("Incorrect entry."));
     }

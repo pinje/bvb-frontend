@@ -76,7 +76,7 @@ function Post(props) {
         axios.delete("http://localhost:8080/posts/" + postId, config)
         .then(response => {
             console.log(`Post deleted ID: ${postId}`);
-            navigate("/profile");
+            navigate("/successdelete");
         })
         .catch(setError("Incorrect entry."));
     }
@@ -248,7 +248,7 @@ function Post(props) {
     const handleConfirmClick = () => {
         deletePost(selectedItem);
         setSelectedItem(null);
-        navigate("/");
+        navigate("/successdelete");
     };
 
     function authorizeToDelete(auth) {
@@ -298,9 +298,9 @@ function Post(props) {
         if (auth.id == 0) {
             return (
                 <div className={styles.votebox}>
-                    <button onClick={() => navigate("/signup")} className={styles.voteneutral}><img src={upvote}/></button>
+                    <button onClick={() => navigate("/login")} className={styles.voteneutral}><img src={upvote}/></button>
                     <div className={styles.count}>{vote}</div>
-                    <button onClick={() => navigate("/signup")} className={styles.voteneutral}><img src={downvote}/></button>
+                    <button onClick={() => navigate("/login")} className={styles.voteneutral}><img src={downvote}/></button>
                 </div>
             )
         } else {

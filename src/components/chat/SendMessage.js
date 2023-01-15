@@ -12,10 +12,10 @@ const SendMessage = (props) => {
   const onMessageSend = () => {
     if (!message) {
       alert('Please type a message!');
+    } else {
+      props.onMessageSend({ 'text': message});
+      setMessage('');
     }
-
-    props.onMessageSend({ 'text': message});
-    setMessage('');
   }
 
   const onSubmit = (event) => {
@@ -24,7 +24,7 @@ const SendMessage = (props) => {
 
   return (
     <form className={styles.sendbox} onSubmit={onSubmit}>
-      <input id='message' type='text' onChange={(event) => setMessage(event.target.value)} value={message} className={styles.input}></input>
+      <input id='message' onChange={(event) => setMessage(event.target.value)} value={message} className={styles.input}></input>
       <button onClick={onMessageSend} className={styles.submit}><img src={send} className={styles.logo} />Send</button>
     </form>
   );

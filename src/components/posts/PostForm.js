@@ -27,7 +27,7 @@ function PostForm(props) {
         axios.post("http://localhost:8080/posts", newPost, config)
         .then(response => {
             console.log(`Post added ID: ${response.data.postId}`);
-            nagivate("/");
+            nagivate("/success");
         })
         .catch(() => setError("Incorrect entry."));
     }

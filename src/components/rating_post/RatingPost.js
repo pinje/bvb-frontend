@@ -13,6 +13,7 @@ import pokal from '../../img/pokal.png'
 import europa from '../../img/europa.png'
 import conference from '../../img/conference.png'
 import friendly from '../../img/friendly.png'
+import AlreadyVoted from "../rating_post_vote/AlreadyVoted";
 
 function RatingPost(props) {
 
@@ -49,7 +50,7 @@ function RatingPost(props) {
         if (alreadyVoted) {
             return (
                 <div>
-                    <VoteFormDeny/>
+                    <AlreadyVoted/>
                 </div>
             )
         } else {

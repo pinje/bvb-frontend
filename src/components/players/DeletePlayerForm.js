@@ -22,7 +22,7 @@ function DeletePlayerForm() {
         axios.delete("http://localhost:8080/players/" + selectedPlayerId, config)
         .then(response => {
             console.log(`Player deleted ID: ${selectedPlayerId}`);
-            nagivate("/success");
+            nagivate("/successdelete");
         })
         .catch(() => setError("Incorrect entry."));
     }

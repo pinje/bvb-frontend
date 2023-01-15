@@ -31,7 +31,11 @@ function ProfilePage() {
     const getComments = () => {
         const userid = auth.id;
 
-        axios.get("http://localhost:8080/comments/user?userId=" + userid)
+        const config = {
+            headers: { Authorization: `Bearer ${auth.accessToken}` }
+        }
+
+        axios.get("http://localhost:8080/comments/user?userId=" + userid, config)
         .then(response => {
             setComments(response.data.comments);
         })

@@ -20,6 +20,7 @@ import DeletePlayer from './pages/DeletePlayer'
 import VotePage from './pages/VotePage'
 import EditPostPage from './pages/EditPostPage'
 import SearchPage from './pages/SearchPage'
+import DeleteSuccessPage from './pages/DeleteSuccessPage'
 
 function App() {
   const { auth } = useAuth();
@@ -50,6 +51,7 @@ function App() {
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/autherror" element={<AuthError />} />
           <Route path="/success" element={<SuccessPage />} />
+          <Route path="/successdelete" element={<DeleteSuccessPage />} />
           <Route path="/addplayer" element={<AddPlayer />} />
           <Route path="/deleteplayer" element={<DeletePlayer />} />
           <Route path="/vote/:id" element={<VotePage />} />
