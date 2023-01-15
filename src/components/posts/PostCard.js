@@ -18,8 +18,7 @@ function PostCard(props) {
     const navigate = useNavigate();
 
     const [vote, setVote] = useState(props.post.vote);
-    const [userUpvote, setUserUpvote] = useState(false);
-    const [userDownvote, setUserDownvote] = useState(false);
+    const [userVote, setUserVote] = useState(0);
     const [author, setAuthor] = useState(false);
 
     const [selectedItem, setSelectedItem] = useState(null);
@@ -35,7 +34,7 @@ function PostCard(props) {
             console.log(`Post deleted ID: ${postId}`);
             navigate("/profile");
         })
-        .catch(setError("Incorrect entry."));
+        .catch(() => setError("Incorrect entry."));
     }
 
     // check if user already upvote, downvoted or not
@@ -43,7 +42,9 @@ function PostCard(props) {
         axios.get("http://localhost:8080/votes/alreadyupvoted?postId=" 
         + props.post.id + "&userId=" + auth.id)
         .then(response => {
-            setUserUpvote(response.data);
+            if (response.data) {
+                setUserVote(1);
+            }
         })
         .catch(error => console.log(error));
     }
@@ -52,7 +53,9 @@ function PostCard(props) {
         axios.get("http://localhost:8080/votes/alreadydownvoted?postId=" 
         + props.post.id + "&userId=" + auth.id)
         .then(response => {
-            setUserDownvote(response.data);
+            if (response.data) {
+                setUserVote(-1);
+            }
         })
         .catch(error => console.log(error));
     }
@@ -88,32 +91,37 @@ function PostCard(props) {
         }
 
         // update vote table 
-        if (author) {
-            // need to find vote entity and update
-            axios.put("http://localhost:8080/votes?postId=" + props.post.id + "&userId=" + auth.id);
+        if (userVote == 1) {
+            // already upvoted, deselect and make it neutral
+            // delete vote entity
+            axios.delete("http://localhost:8080/votes?postId=" + props.post.id + "&userId=" + auth.id);
+
+            // update post table vote count
+            axios.put("http://localhost:8080/posts/" + props.post.id + "/downvote", null, config)
+            .then(() => setVote(vote - 1), setUserVote(0));
+            
+        } else if (userVote == -1) {
+            // was downvoted, add 2
+            // find and update
+            axios.put("http://localhost:8080/alreadyvoted?postId=" + props.post.id + "&userId=" + auth.id);
+
+            // update post table vote count
+            axios.put("http://localhost:8080/posts/" + props.post.id + "/upvote", null, config)
+            .then(() => setVote(vote + 2), setUserVote(1));
+
+            
         } else {
-            // check if user already voted or not
-            axios.get("http://localhost:8080/votes/alreadyvoted?postId=" + props.post.id + "&userId=" + auth.id)
-            .then(response => {
-                if (response.data) {
-                    // user already voted, need to find and update vote entity
-                    axios.put("http://localhost:8080/votes?postId=" + props.post.id + "&userId=" + auth.id);
-                } else {
-                    // user first time voting, just need to add new vote entity
-                    axios.post("http://localhost:8080/votes", newVote)
-                    .then(response => {
-                        console.log("Vote added successfully: " + response.data.voteId);
-                    })
-                }
-            })
+            // was neutral, add 1
+            // create
+            axios.post("http://localhost:8080/votes", newVote)
+                .then(response => {
+                    console.log("Vote added successfully: " + response.data.voteId);
+                })
+
+            // update post table vote count
+            axios.put("http://localhost:8080/posts/" + props.post.id + "/upvote", null, config)
+            .then(() => setVote(vote + 1), setUserVote(1));
         }
-
-        // update post table vote count
-        axios.put("http://localhost:8080/posts/" + props.post.id + "/upvote", null, config)
-        .then(setVote(vote + 1));
-
-        setUserDownvote(false);
-        setUserUpvote(true);
       };
     
       const handleDownvote = () => {
@@ -129,39 +137,41 @@ function PostCard(props) {
         }
 
         // update vote table 
-        if (author) {
-            // need to find vote entity and update
-            axios.put("http://localhost:8080/votes?postId=" + props.post.id + "&userId=" + auth.id);
+        if (userVote == 1) {
+            // upvoted, downvote -1
+            // find and update
+            axios.put("http://localhost:8080/alreadyvoted?postId=" + props.post.id + "&userId=" + auth.id);
+
+            // update post table vote count
+            axios.put("http://localhost:8080/posts/" + props.post.id + "/downvote", null, config)
+            .then(() => setVote(vote - 1), setUserVote(-1));
+        } else if (userVote == -1) {
+            // was already downvoted, make it neutral +1
+            // delete
+            axios.delete("http://localhost:8080/votes?postId=" + props.post.id + "&userId=" + auth.id);
+
+            // update post table vote count
+            axios.put("http://localhost:8080/posts/" + props.post.id + "/upvote", null, config)
+            .then(() => setVote(vote + 1), setUserVote(0));
         } else {
-            // check if user already voted or not
-            axios.get("http://localhost:8080/votes/alreadyvoted?postId=" + props.post.id + "&userId=" + auth.id)
-            .then(response => {
-                if (response.data) {
-                    // user already voted, need to find and update vote entity
-                    axios.put("http://localhost:8080/votes?postId=" + props.post.id + "&userId=" + auth.id);
-                } else {
-                    // user first time voting, just need to add new vote entity
-                    axios.post("http://localhost:8080/votes", newVote)
-                    .then(response => {
-                        console.log("Vote added successfully: " + response.data.voteId);
-                    })
-                }
-            })
+            // was neutral, minus 1
+            // create
+            axios.post("http://localhost:8080/votes", newVote)
+                .then(response => {
+                    console.log("Vote added successfully: " + response.data.voteId);
+                })
+
+            // update post table vote count
+            axios.put("http://localhost:8080/posts/" + props.post.id + "/upvote", null, config)
+            .then(() => setVote(vote - 1), setUserVote(-1))
         }
-
-        // update post table vote count
-        axios.put("http://localhost:8080/posts/" + props.post.id + "/downvote", null, config)
-        .then(setVote(vote - 1));
-
-        setUserDownvote(true);
-        setUserUpvote(false);
       };
 
     useEffect(() => {
         checkUpvoted();
         checkDownvoted();
         checkAuthor();
-      }, [vote, author, userUpvote, userDownvote]);
+      }, []);
 
     function authorizeToDelete(auth) {
         if (auth === 0) {
@@ -205,17 +215,39 @@ function PostCard(props) {
             difference.humanize()
         )
     }
+
+    function button() {
+        if (userVote == 1) {
+            return (
+                <div>
+                    <button onClick={handleUpvote}>up</button>
+                    {vote}
+                    <button onClick={handleDownvote}>-</button>
+                </div>
+            )
+        } else if (userVote == 0) {
+            return(
+                <div>
+                    <button onClick={handleUpvote}>-</button>
+                    {vote}
+                    <button onClick={handleDownvote}>-</button>
+                </div>
+            )
+        } else {
+            return(
+                <div>
+                    <button onClick={handleUpvote}>-</button>
+                    {vote}
+                    <button onClick={handleDownvote}>down</button>
+                </div>
+            )
+        }
+    }
     
     return (
         <div className={styles.post}>
             <div className={styles.vote}>
-                <button onClick={handleUpvote} disabled={userUpvote}>
-                    <UpvotePost/>
-                </button>
-                {vote}
-                <button onClick={handleDownvote} disabled={userDownvote}>
-                    <DownvotePost/>
-                </button>
+                {button()}
             </div>
             <div className={styles.postbox}>
                 <div className={styles.author}>posted by {props.post.username} @ {getTime()} ago</div>
