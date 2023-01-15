@@ -157,6 +157,11 @@ option:hover {
   color: #C3362B;
 }
 
+.success {
+  margin-top: 15px;
+  color: #4CAF50;
+}
+
 .position-title {
   font-family: 'bold';
   font-size: 30px;

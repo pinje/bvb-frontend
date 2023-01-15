@@ -27,6 +27,7 @@ function Post(props) {
     const [vote, setVote] = useState();
     const [comments, setComments] = useState([]);
     const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
     const [userVote, setUserVote] = useState(0);
     const [author, setAuthor] = useState(false);
 
@@ -62,9 +63,9 @@ function Post(props) {
         axios.post("http://localhost:8080/comments", newComment, config)
         .then(response => {
             console.log(`Comment added ID: ${response.data.commentId}`);
-            navigate("/");
         })
-        .catch(setError("Incorrect entry."));
+        .then(() => setSuccess("Comment posted successfully."))
+        .catch(() => setError("Incorrect entry."));
     }
 
     const deletePost = (postId) => {
@@ -229,9 +230,10 @@ function Post(props) {
             )
         } else {
             return (
-                <div>
+                <div className={styles.commentsubmitbox}>
                     <CommentForm addComment={addComment}/>
                     <div className="error">{error}</div>
+                    <div className="success">{success}</div>
                 </div>
             )
         }

@@ -9,6 +9,7 @@ function CommentForm(props) {
         // required to prevent standard behaviour of submitting
         e.preventDefault();
         props.addComment(comment);
+        setComment("");
     }
 
     const commentChanged = e => {
@@ -24,6 +25,7 @@ function CommentForm(props) {
                         type="text"
                         placeholder="Text (Max. 200 characters)"
                         onChange={commentChanged}
+                        value={comment}
                     />
                 </div>
             <div>
