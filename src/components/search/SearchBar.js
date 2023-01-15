@@ -23,7 +23,7 @@ function SearchBar() {
     const searchChanged = e => {
         setSearchQuery(e.target.value);
     };
-    
+
     return (
         <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.searchbox}>
@@ -34,7 +34,7 @@ function SearchBar() {
                     placeholder="Search post by title"
                 />
             </div>
-            <div className="error">{error}</div>
+            <div className={styles.error}>{error}</div>
         </form>
     )
 

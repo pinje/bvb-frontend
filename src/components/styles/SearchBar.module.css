@@ -35,3 +35,8 @@
   justify-content: center;
   align-items: center;
 }
+
+.error {
+  color: #C3362B;
+  margin-left: 10px;
+}
