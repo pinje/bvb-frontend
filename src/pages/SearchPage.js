@@ -16,6 +16,7 @@ function SearchPage() {
         axios.get("http://localhost:8080/posts")
         .then(response => {
             setPosts(response.data.posts);
+            filteredData();
         })
         .catch(error => console.log(error));
     };
@@ -39,8 +40,7 @@ function SearchPage() {
 
     useEffect(() => {
         getPosts();
-        filteredData();
-    }, []);
+    }, [filteredPosts]);
 
     return (
         <div className="container">

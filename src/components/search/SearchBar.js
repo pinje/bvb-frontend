@@ -23,7 +23,7 @@ function SearchBar() {
     const searchChanged = e => {
         setSearchQuery(e.target.value);
     };
-
+    
     return (
         <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.searchbox}>
