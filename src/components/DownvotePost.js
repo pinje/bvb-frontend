@@ -5,13 +5,10 @@ function DownvotePost(props) {
     const handleSubmit = e => {
         // required to prevent standard behaviour of submitting
         e.preventDefault();
-        props.downvote();
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <button className="downvote">no</button>
-        </form>
+        <div>down</div>
     )
 }
 

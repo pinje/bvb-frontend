@@ -33,7 +33,7 @@ function RatingPost(props) {
     // check if user already voted or not
     const checkIfUserAlreadyVoted = () => {
         axios.get("http://localhost:8080/ratings/alreadyvoted?ratingPostId=" 
-        + 14 + "&userId=" + auth.id)
+        + parsedId + "&userId=" + auth.id)
         .then(response => {
             setAlreadyVoted(response.data);
         })

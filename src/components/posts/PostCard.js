@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import styles from "../styles/PostCard.module.css"
 import UpvotePost from '../UpvotePost'
 import DownvotePost from '../DownvotePost';
@@ -17,13 +17,10 @@ function PostCard(props) {
     const { auth } = useAuth();
     const navigate = useNavigate();
 
-    const upvote = () => {
-        axios.put("http://localhost:8080/posts/" + props.post.id + "/upvote");
-    }
-
-    const downvote = () => {
-        axios.put("http://localhost:8080/posts/" + props.post.id + "/downvote");
-    }
+    const [vote, setVote] = useState(props.post.vote);
+    const [userUpvote, setUserUpvote] = useState(false);
+    const [userDownvote, setUserDownvote] = useState(false);
+    const [author, setAuthor] = useState(false);
 
     const [selectedItem, setSelectedItem] = useState(null);
     const [error, setError] = useState("");
@@ -41,6 +38,33 @@ function PostCard(props) {
         .catch(setError("Incorrect entry."));
     }
 
+    // check if user already upvote, downvoted or not
+    const checkUpvoted = () => {
+        axios.get("http://localhost:8080/votes/alreadyupvoted?postId=" 
+        + props.post.id + "&userId=" + auth.id)
+        .then(response => {
+            setUserUpvote(response.data);
+        })
+        .catch(error => console.log(error));
+    }
+
+    const checkDownvoted = () => {
+        axios.get("http://localhost:8080/votes/alreadydownvoted?postId=" 
+        + props.post.id + "&userId=" + auth.id)
+        .then(response => {
+            setUserDownvote(response.data);
+        })
+        .catch(error => console.log(error));
+    }
+
+    function checkAuthor() {
+        if (auth.id === props.post.userId) {
+            setAuthor(true);
+        } else {
+            setAuthor(false);
+        }
+    }
+
     const handleDeleteClick = (item) => {
         setSelectedItem(item);
     };
@@ -50,6 +74,94 @@ function PostCard(props) {
         setSelectedItem(null);
         navigate("/");
     };
+
+    const handleUpvote = () => {
+        // from here user is allowed to upvote
+        const config = {
+            headers: { Authorization: `Bearer ${auth.accessToken}` }
+        }
+
+        const newVote = {
+            "type": true,
+            "user": auth.id,
+            "post": props.post.id
+        }
+
+        // update vote table 
+        if (author) {
+            // need to find vote entity and update
+            axios.put("http://localhost:8080/votes?postId=" + props.post.id + "&userId=" + auth.id);
+        } else {
+            // check if user already voted or not
+            axios.get("http://localhost:8080/votes/alreadyvoted?postId=" + props.post.id + "&userId=" + auth.id)
+            .then(response => {
+                if (response.data) {
+                    // user already voted, need to find and update vote entity
+                    axios.put("http://localhost:8080/votes?postId=" + props.post.id + "&userId=" + auth.id);
+                } else {
+                    // user first time voting, just need to add new vote entity
+                    axios.post("http://localhost:8080/votes", newVote)
+                    .then(response => {
+                        console.log("Vote added successfully: " + response.data.voteId);
+                    })
+                }
+            })
+        }
+
+        // update post table vote count
+        axios.put("http://localhost:8080/posts/" + props.post.id + "/upvote", null, config)
+        .then(setVote(vote + 1));
+
+        setUserDownvote(false);
+        setUserUpvote(true);
+      };
+    
+      const handleDownvote = () => {
+        // from here user is allowed to downvote
+        const config = {
+            headers: { Authorization: `Bearer ${auth.accessToken}` }
+        }
+
+        const newVote = {
+            "type": false,
+            "user": auth.id,
+            "post": props.post.id
+        }
+
+        // update vote table 
+        if (author) {
+            // need to find vote entity and update
+            axios.put("http://localhost:8080/votes?postId=" + props.post.id + "&userId=" + auth.id);
+        } else {
+            // check if user already voted or not
+            axios.get("http://localhost:8080/votes/alreadyvoted?postId=" + props.post.id + "&userId=" + auth.id)
+            .then(response => {
+                if (response.data) {
+                    // user already voted, need to find and update vote entity
+                    axios.put("http://localhost:8080/votes?postId=" + props.post.id + "&userId=" + auth.id);
+                } else {
+                    // user first time voting, just need to add new vote entity
+                    axios.post("http://localhost:8080/votes", newVote)
+                    .then(response => {
+                        console.log("Vote added successfully: " + response.data.voteId);
+                    })
+                }
+            })
+        }
+
+        // update post table vote count
+        axios.put("http://localhost:8080/posts/" + props.post.id + "/downvote", null, config)
+        .then(setVote(vote - 1));
+
+        setUserDownvote(true);
+        setUserUpvote(false);
+      };
+
+    useEffect(() => {
+        checkUpvoted();
+        checkDownvoted();
+        checkAuthor();
+      }, [vote, author, userUpvote, userDownvote]);
 
     function authorizeToDelete(auth) {
         if (auth === 0) {
@@ -97,9 +209,13 @@ function PostCard(props) {
     return (
         <div className={styles.post}>
             <div className={styles.vote}>
-                <UpvotePost upvote={upvote} />
-                {props.post.vote}
-                <DownvotePost downvote={downvote} />
+                <button onClick={handleUpvote} disabled={userUpvote}>
+                    <UpvotePost/>
+                </button>
+                {vote}
+                <button onClick={handleDownvote} disabled={userDownvote}>
+                    <DownvotePost/>
+                </button>
             </div>
             <div className={styles.postbox}>
                 <div className={styles.author}>posted by {props.post.username} @ {getTime()} ago</div>

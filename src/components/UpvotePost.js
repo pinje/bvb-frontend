@@ -1,17 +1,15 @@
-import React, { useState } from "react"
+import React, { useEffect } from "react"
+import styles from './styles/Vote.module.css';
 
 function UpvotePost(props) {
 
     const handleSubmit = e => {
         // required to prevent standard behaviour of submitting
         e.preventDefault();
-        props.upvote();
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <button className="upvote">yea</button>
-        </form>
+        <div>up</div>
     )
 }
 
