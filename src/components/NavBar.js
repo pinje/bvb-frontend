@@ -5,6 +5,7 @@ import logo from '../img/bvb.png'
 import { useNavigate } from "react-router";
 import { useAuth } from "./context/AuthProvider";
 import SearchBar from "./search/SearchBar";
+import out from '../img/logout.png'
 
 function NavBar() {
 
